@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { availableSubjects,nigerianStates } from '../lid/data';
-import { Option } from '../lid/data';
-import Header from '../ui/login/header';
-import Whattoget from '../ui/login/whattoget';
-import Terms from '../ui/login/terms';
-import Tips from '../ui/login/subjectSelectTip';
+import { availableSubjects,nigerianStates } from '../../lid/data';
+import { Option } from '../../lid/data';
+import Header from '../../ui/login/header';
+import Whattoget from '../../ui/login/whattoget';
+import Terms from '../../ui/login/terms';
+import Tips from '../../ui/login/subjectSelectTip';
 import Link from 'next/link';
 
 

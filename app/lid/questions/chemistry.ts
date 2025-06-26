@@ -1,0 +1,1752 @@
+export const jambChemistry =[
+    {
+        "year": 2000,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2000,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2000,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2000,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2000,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2001,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2001,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2001,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2001,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2001,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2002,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2002,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2002,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2002,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2002,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2003,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2003,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2003,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2003,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2003,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2004,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2004,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2004,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2004,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2004,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2005,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2005,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2005,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2005,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2005,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2006,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2006,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2006,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2006,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2006,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2007,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2007,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2007,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2007,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2007,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2008,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2008,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2008,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2008,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2008,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2009,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2009,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2009,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2009,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2009,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2010,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2010,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2010,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2010,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2010,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2011,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2011,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2011,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2011,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2011,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2012,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2012,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2012,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2012,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2012,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2013,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2013,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2013,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2013,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2013,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2014,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2014,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2014,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2014,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2014,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2015,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2015,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2015,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2015,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2015,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2016,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2016,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2016,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2016,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2016,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2017,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2017,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2017,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2017,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2017,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2018,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2018,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2018,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2018,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2018,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2019,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2019,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2019,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2019,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2019,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2020,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2020,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2020,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2020,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2020,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2021,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2021,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2021,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2021,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2021,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2022,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2022,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2022,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2022,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2022,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2023,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2023,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2023,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2023,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2023,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    },
+    {
+        "year": 2024,
+        "subject": "Chemistry",
+        "type": "atomic structure",
+        "question": "What is the number of protons in an atom of oxygen?",
+        "options": {
+            "A": "6",
+            "B": "7",
+            "C": "8",
+            "D": "16"
+        },
+        "answer": "C",
+        "explanation": "Oxygen has an atomic number of 8, which is the number of protons."
+    },
+    {
+        "year": 2024,
+        "subject": "Chemistry",
+        "type": "chemical bonding",
+        "question": "Which type of bond involves the sharing of electron pairs between atoms?",
+        "options": {
+            "A": "Ionic bond",
+            "B": "Covalent bond",
+            "C": "Metallic bond",
+            "D": "Hydrogen bond"
+        },
+        "answer": "B",
+        "explanation": "Covalent bonds involve the sharing of electron pairs."
+    },
+    {
+        "year": 2024,
+        "subject": "Chemistry",
+        "type": "periodic table",
+        "question": "Which group contains the noble gases?",
+        "options": {
+            "A": "Group I",
+            "B": "Group II",
+            "C": "Group VII",
+            "D": "Group VIII"
+        },
+        "answer": "D",
+        "explanation": "Noble gases are in Group VIII (18 in modern periodic table)."
+    },
+    {
+        "year": 2024,
+        "subject": "Chemistry",
+        "type": "stoichiometry",
+        "question": "What is the molar mass of water (H\u2082O)?",
+        "options": {
+            "A": "16 g/mol",
+            "B": "17 g/mol",
+            "C": "18 g/mol",
+            "D": "20 g/mol"
+        },
+        "answer": "C",
+        "explanation": "H = 1, O = 16. So, H\u2082O = 2*1 + 16 = 18 g/mol."
+    },
+    {
+        "year": 2024,
+        "subject": "Chemistry",
+        "type": "acids and bases",
+        "question": "Which of the following is a strong acid?",
+        "options": {
+            "A": "CH\u2083COOH",
+            "B": "H\u2082CO\u2083",
+            "C": "HCl",
+            "D": "NH\u2084\u207a"
+        },
+        "answer": "C",
+        "explanation": "Hydrochloric acid (HCl) is a strong acid."
+    }
+]

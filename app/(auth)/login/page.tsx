@@ -1,15 +1,15 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Header from '../ui/login/header';
-import { Option } from '../lid/data';
+import Header from '../../ui/login/header';
+import { Option } from '../../lid/data';
 import Link from 'next/link';
 
   const option:Option ={
 src:"/help",
 item :"   Need Help?"
 }
-export default function LoginPage() {
+ function LoginPage() {
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
@@ -113,12 +113,14 @@ export default function LoginPage() {
 
                 {/* Forgot Password */}
                 <div className="text-center">
+                  <Link href='/forgot-password'>
                   <button
                     type="button"
                     className="text-sm text-gray-300 hover:text-yellow-400 transition-colors"
                   >
                     Forgot Password?
                   </button>
+                  </Link>
                 </div>
               </div>
 
@@ -186,3 +188,6 @@ export default function LoginPage() {
     </div>
   );
 }
+
+
+export default LoginPage

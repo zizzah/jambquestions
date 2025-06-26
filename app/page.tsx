@@ -62,14 +62,19 @@ export default function JAMBQuizLanding() {
             </p>
 
             {/* CTA Buttons */}
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <Link href='/login'>
               <button className="group px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-semibold rounded-xl hover:shadow-2xl hover:shadow-yellow-500/25 transform hover:scale-105 transition-all duration-300 flex items-center justify-center">
                 Start Practicing Now
                 <span className="ml-2 text-lg group-hover:translate-x-1 transition-transform inline-block">→</span>
               </button>
+              </Link>
+              <Link href='/sampleQuestion'>
               <button className="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl hover:bg-white/20 transition-all duration-300">
                 View Sample Questions
               </button>
+              </Link>
             </div>
 
             {/* Animated Stats */}

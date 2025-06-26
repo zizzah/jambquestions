@@ -1,4 +1,6 @@
 
+import { Subjects } from "./datadefinition";
+
 export const userData = {
     name: "Adunni Okafor",
     targetScore: 300,
@@ -43,6 +45,8 @@ export  const upcomingGoals = [
   ];
 
 
+  
+
 
   export  const nigerianStates = [
     'Abia', 'Adamawa', 'Akwa Ibom', 'Anambra', 'Bauchi', 'Bayelsa', 'Benue', 'Borno',
@@ -52,6 +56,8 @@ export  const upcomingGoals = [
     'Yobe', 'Zamfara'
   ];
 
+
+  
  export const availableSubjects = [
     { id: 'english', name: 'English Language', emoji: '📚', required: true },
     { id: 'mathematics', name: 'Mathematics', emoji: '🔢' },
@@ -80,6 +86,31 @@ export  const upcomingGoals = [
     { id: 'progress', title: 'Progress Tracking', emoji: '📊' },
     { id: 'technical', title: 'Technical Support', emoji: '🛠️' },
     { id: 'billing', title: 'Billing & Payments', emoji: '💳' }
+  ];
+
+
+
+
+
+  export const samplessubjects:Subjects [] = [
+    { name: "All Subjects", icon: "📋", count: 15000, id: "All Subjects" },
+    { name: "Mathematics", icon: "📐", count: 3500, id: "Mathematics" },
+    { name: "English", icon: "📚", count: 3200, id: "English" },
+    { name: "Physics", icon: "⚡", count: 2800, id: "Physics" },
+    { name: "Chemistry", icon: "🧪", count: 2600, id: "Chemistry" },
+    { name: "Biology", icon: "🧬", count: 2900, id: "Biology" },
+  
+     { name:'Economics',  icon: '💰' ,count:200,id: 'Economics',},
+      { name: 'Government', icon: '🏛️' ,count :300, id: 'Government',},
+      { name: 'Geography', icon: '🌍', count :300, id: 'Geography', },
+      { name: 'Literature', icon: '📖',count :300, id: 'Literatureopkp', },
+      { name: 'Christian Religious Knowledge', icon: '✝️',count :300 , id: 'Christian Religious Knowledge'},
+      {  name: 'Islamic Religious Knowledge', icon: '☪️',count :300 ,id: 'Islamic Religious Knowledge',},
+      {  name: 'Commerce', icon: '💼',count :300 ,id: 'Commerce',},
+      {  name: 'Accounting', icon: '📊',count :300 ,id: 'Accounting',},
+      {  name: 'Agricultural Science', icon: '🌾',count :300 ,id: 'Agricultural Science',},
+      {  name: 'Civic Education', icon: '🏛️',count :300,id: 'Civic Education', },
+      {  name: 'Computer Studies', icon: '💻',count :300,id: 'Computer Studies', }
   ];
 
  export   const faqData = [

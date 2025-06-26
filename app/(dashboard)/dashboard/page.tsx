@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { userData, stats, subjects,recentActivity, upcomingGoals,notifications} from '../lid/data';
+import { userData, stats, subjects,recentActivity, upcomingGoals,notifications} from '../../lid/data';
 export default function JAMBDashboard() {
   const [isVisible, setIsVisible] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
