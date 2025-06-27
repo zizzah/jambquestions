@@ -1,13 +1,14 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { userData, stats, subjects,recentActivity, upcomingGoals,notifications} from '../../lid/data';
 export default function JAMBDashboard() {
   const [isVisible, setIsVisible] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentStreak, setCurrentStreak] = useState(7);
   const [selectedSubject, setSelectedSubject] = useState('all');
-  const [showNotifications, setShowNotifications] = useState(false);
+//  const [showNotifications, setShowNotifications] = useState(false);
 
   // Mock user data
 /*   const userData = {
@@ -74,61 +75,6 @@ export default function JAMBDashboard() {
 
       <div className="relative z-10">
         {/* Header */}
-        <header className="border-b border-white/10 bg-white/5 backdrop-blur-sm">
-          <div className="container mx-auto px-6 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <div className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">📚</span>
-                </div>
-                <div>
-                  <h1 className="text-xl font-bold">JAMBPrep Dashboard</h1>
-                  <p className="text-sm text-gray-300">Your path to JAMB success</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-4">
-                {/* Notifications */}
-                <div className="relative">
-                  <button
-                    onClick={() => setShowNotifications(!showNotifications)}
-                    className="relative p-2 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all"
-                  >
-                    <span className="text-lg">🔔</span>
-                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
-                  </button>
-                  
-                  {showNotifications && (
-                    <div className="absolute right-0 top-12 w-80 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-4 shadow-2xl">
-                      <h3 className="font-semibold mb-3">Notifications</h3>
-                      <div className="space-y-3 max-h-64 overflow-y-auto">
-                        {notifications.map((notif, index) => (
-                          <div key={index} className="flex items-start space-x-3 p-2 bg-white/5 rounded-lg">
-                            <div className="text-sm">
-                              <p className="text-white">{notif.message}</p>
-                              <p className="text-gray-400 text-xs mt-1">{notif.time}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-                
-                {/* User Profile */}
-                <div className="flex items-center space-x-3 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
-                  <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-                    <span className="text-sm">{userData.avatar}</span>
-                  </div>
-                  <div className="text-sm">
-                    <p className="font-medium">{userData.name}</p>
-                    <p className="text-gray-300 text-xs">{userData.currentLevel}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
 
         {/* Main Content */}
         <main className="container mx-auto px-6 py-8">
