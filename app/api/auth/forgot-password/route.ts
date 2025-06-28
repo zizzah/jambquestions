@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
 
     // Generate secure reset token
     const resetToken = crypto.randomBytes(32).toString('hex');
-    const expiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes
+    const expiresAt = new Date(Date.now() + 18 * 60 * 10000); // 15 minutes
 
     // Delete any existing tokens for this email
     await sql`

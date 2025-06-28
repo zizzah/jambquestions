@@ -1,143 +1,97 @@
-// app/api/auth/forgot-password/route.ts
+// app/api/auth/reset-password/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import postgres from 'postgres';
-import crypto from 'crypto';
-import { sendPasswordResetEmail } from '@/app/lid/action/email';
+import bcrypt from 'bcryptjs';
 
-// Initialize postgres connection with better error handling
-let sql: postgres.Sql;
-
-try {
-  if (!process.env.POSTGRES_URL) {
-    throw new Error('POSTGRES_URL environment variable is not set');
-  }
-  
-  sql = postgres(process.env.POSTGRES_URL, { 
-    ssl: 'require',
-    max: 1, // Limit connections for serverless
-    idle_timeout: 20,
-    connect_timeout: 10,
-  });
-} catch (error) {
-  console.error('Database connection error:', error);
-}
+const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
 export async function POST(request: NextRequest) {
   try {
-    // Check if database connection exists
-    if (!sql) {
-      console.error('Database connection not available');
-      return NextResponse.json(
-        { error: 'Database connection error' },
-        { status: 500 }
-      );
-    }
+    const { token, password } = await request.json();
 
-    const { email } = await request.json();
-
-    if (!email) {
+    if (!token || !password) {
       return NextResponse.json(
-        { error: 'Email is required' },
+        { error: 'Token and password are required' },
         { status: 400 }
       );
     }
 
-    const normalizedEmail = email.toLowerCase().trim();
-    console.log('Checking for email:', normalizedEmail);
-
-    // Check if user exists with better error handling
-    let users;
-    try {
-      users = await sql`
-        SELECT id, email FROM users 
-        WHERE email = ${normalizedEmail}
-      `;
-    } catch (dbError) {
-      console.error('Database query error:', dbError);
+    if (password.length < 8) {
       return NextResponse.json(
-        { error: 'Database error occurred' },
-        { status: 500 }
-      );
-    }
-    
-    console.log('Users found:', users.length);
-
-    if (users.length === 0) {
-      // Don't reveal that the email doesn't exist for security
-      console.log('Email not found in database, returning success message without sending email');
-      return NextResponse.json(
-        { 
-          message: 'If an account with that email exists, we have sent a password reset link.',
-          emailSent: false
-        },
-        { status: 200 }
+        { error: 'Password must be at least 8 characters long' },
+        { status: 400 }
       );
     }
 
-    console.log('Email found, proceeding with reset token generation');
+    // Find valid token
+    const tokenRecords = await sql`
+      SELECT email, expires_at, used 
+      FROM password_reset_tokens 
+      WHERE token = ${token}
+    `;
 
-    // Generate secure reset token
-    const resetToken = crypto.randomBytes(32).toString('hex');
-    const expiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes
-
-    try {
-      // Delete any existing tokens for this email
-      await sql`
-        DELETE FROM password_reset_tokens 
-        WHERE email = ${normalizedEmail}
-      `;
-
-      // Insert new reset token
-      await sql`
-        INSERT INTO password_reset_tokens (email, token, expires_at)
-        VALUES (${normalizedEmail}, ${resetToken}, ${expiresAt})
-      `;
-    } catch (dbError) {
-      console.error('Database operation error:', dbError);
+    if (tokenRecords.length === 0) {
       return NextResponse.json(
-        { error: 'Failed to create reset token' },
-        { status: 500 }
+        { error: 'Invalid or expired reset token' },
+        { status: 400 }
       );
     }
 
-    // Send reset email
-    let emailResult;
-    try {
-      emailResult = await sendPasswordResetEmail(normalizedEmail, resetToken);
-    } catch (emailError) {
-      console.error('Email service error:', emailError);
+    const tokenRecord = tokenRecords[0];
+
+    // Check if token is expired
+    if (new Date() > new Date(tokenRecord.expires_at)) {
       return NextResponse.json(
-        { error: 'Email service unavailable' },
-        { status: 500 }
+        { error: 'Reset token has expired' },
+        { status: 400 }
       );
     }
 
-    if (!emailResult.success) {
-      console.error('Failed to send reset email:', emailResult.error);
+    // Check if token is already used
+    if (tokenRecord.used) {
       return NextResponse.json(
-        { error: 'Failed to send reset email. Please try again.' },
-        { status: 500 }
+        { error: 'Reset token has already been used' },
+        { status: 400 }
       );
     }
+
+    // Hash the new password
+    const hashedPassword = await bcrypt.hash(password, 12);
+
+    // Update user password
+    const updateResult = await sql`
+      UPDATE users 
+      SET password = ${hashedPassword}, updated_at = CURRENT_TIMESTAMP
+      WHERE email = ${tokenRecord.email}
+    `;
+
+    if (updateResult.count === 0) {
+      return NextResponse.json(
+        { error: 'User not found' },
+        { status: 404 }
+      );
+    }
+
+    // Mark token as used
+    await sql`
+      UPDATE password_reset_tokens 
+      SET used = true 
+      WHERE token = ${token}
+    `;
+
+    // Optional: Delete all tokens for this user for extra security
+    await sql`
+      DELETE FROM password_reset_tokens 
+      WHERE email = ${tokenRecord.email}
+    `;
 
     return NextResponse.json(
-      { 
-        message: 'If an account with that email exists, we have sent a password reset link.',
-        emailSent: true
-      },
+      { message: 'Password has been reset successfully' },
       { status: 200 }
     );
 
   } catch (error) {
-    console.error('Forgot password error:', error);
-    
-    // More specific error logging
-    if (error instanceof Error) {
-      console.error('Error name:', error.name);
-      console.error('Error message:', error.message);
-      console.error('Error stack:', error.stack);
-    }
-    
+    console.error('Reset password error:', error);
     return NextResponse.json(
       { error: 'Internal server error. Please try again.' },
       { status: 500 }
