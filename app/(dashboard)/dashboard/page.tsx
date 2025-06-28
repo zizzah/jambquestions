@@ -8,52 +8,6 @@ export default function JAMBDashboard() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentStreak, setCurrentStreak] = useState(7);
   const [selectedSubject, setSelectedSubject] = useState('all');
-//  const [showNotifications, setShowNotifications] = useState(false);
-
-  // Mock user data
-/*   const userData = {
-    name: "Adunni Okafor",
-    targetScore: 300,
-    currentLevel: "Intermediate",
-    joinDate: "January 2024",
-    avatar: "👩🏽‍🎓"
-  };
-
-  const stats = [
-    { title: "Questions Answered", value: "2,847", change: "+127 this week", icon: "📊", color: "from-blue-500 to-blue-600" },
-    { title: "Current Streak", value: `${currentStreak} days`, change: "Keep it up!", icon: "🔥", color: "from-orange-500 to-red-500" },
-    { title: "Average Score", value: "78%", change: "+5% from last week", icon: "📈", color: "from-green-500 to-emerald-600" },
-    { title: "Mock Exams", value: "12", change: "3 this month", icon: "📝", color: "from-purple-500 to-purple-600" }
-  ];
-
-  const subjects = [
-    { name: "Mathematics", progress: 85, questions: 1247, icon: "📊", color: "bg-blue-500", recent: "+45 today" },
-    { name: "English", progress: 92, questions: 1089, icon: "📚", color: "bg-green-500", recent: "+32 today" },
-    { name: "Physics", progress: 67, questions: 892, icon: "⚛️", color: "bg-purple-500", recent: "+28 today" },
-    { name: "Chemistry", progress: 74, questions: 756, icon: "🧪", color: "bg-red-500", recent: "+19 today" },
-    { name: "Biology", progress: 81, questions: 934, icon: "🧬", color: "bg-emerald-500", recent: "+37 today" },
-    { name: "Literature", progress: 58, questions: 423, icon: "📖", color: "bg-orange-500", recent: "+12 today" }
-  ];
-
-  const recentActivity = [
-    { subject: "Mathematics", action: "Completed Algebra Quiz", score: "85%", time: "2 hours ago", icon: "📊" },
-    { subject: "English", action: "Mock Exam Attempt", score: "92%", time: "5 hours ago", icon: "📚" },
-    { subject: "Physics", action: "Practice Session", score: "78%", time: "1 day ago", icon: "⚛️" },
-    { subject: "Chemistry", action: "Topic Review", score: "81%", time: "2 days ago", icon: "🧪" }
-  ];
-
-  const upcomingGoals = [
-    { title: "Complete 100 Math Questions", progress: 67, deadline: "3 days left", priority: "high" },
-    { title: "Take Physics Mock Exam", progress: 0, deadline: "5 days left", priority: "medium" },
-    { title: "Review Chemistry Chapters 1-5", progress: 40, deadline: "1 week left", priority: "low" }
-  ];
-
-  const notifications = [
-    { type: "achievement", message: "🎉 You've reached a 7-day streak!", time: "Just now" },
-    { type: "reminder", message: "📚 Don't forget your daily English practice", time: "2 hours ago" },
-    { type: "update", message: "✨ New questions added to Mathematics", time: "1 day ago" }
-  ];
- */
   useEffect(() => {
     setIsVisible(true);
   }, []);
