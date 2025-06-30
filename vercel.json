@@ -1,9 +1,10 @@
 {
-    "installCommand": "pnpm approve-builds && pnpm install",
-    "builds": [
-      {
-        "src": "package.json",
-        "use": "@vercel/next"
-      }
-    ]
-  }
+  "installCommand": "npm install --legacy-peer-deps",
+  "buildCommand": "npm install --legacy-peer-deps && npm run build",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ]
+}

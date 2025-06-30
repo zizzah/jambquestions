@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { ChevronDown, ChevronRight, Menu, X, Bell, Search, User, Settings, LogOut } from 'lucide-react';
-
+import { handleSignOut } from '@/app/lid/action/action';
 // Define interfaces for better type safety
 interface NavigationItem {
   title: string;
@@ -240,11 +240,11 @@ const DashboardLayouts: React.FC<DashboardLayoutProps> = ({ children }) => {
     setIsMobileMenuOpen(false);
   };
 
-  const handleSignOut = (): void => {
+ /*  const handleSignOut = (): void => {
     // Add your sign out logic here
     console.log('Signing out...');
     // Example: router.push('/login');
-  };
+  }; */
 
   // Generate breadcrumbs from current path
   const generateBreadcrumbs = (): string[] => {
@@ -425,7 +425,7 @@ const DashboardLayouts: React.FC<DashboardLayoutProps> = ({ children }) => {
                     <Settings size={16} />
                     <span>Settings</span>
                   </button>
-                  <div className="border-t border-white/10 mt-2 pt-2">
+                  <div className="border-t border-white/10 mt-2 pt-2" onClick={handleSignOut}>
                     <button 
                       className="w-full flex items-center space-x-3 px-4 py-2 hover:bg-white/10 transition-all text-left text-red-400"
                       onClick={handleSignOut}

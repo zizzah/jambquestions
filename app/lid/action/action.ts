@@ -1,6 +1,6 @@
 'use server';
  
-import { signIn } from '@/auth';
+import { signIn,signOut } from '@/auth';
 import { AuthError } from 'next-auth';
 import { redirect } from 'next/navigation';
  
@@ -25,4 +25,8 @@ export async function authenticate(
   // If we reach here, authentication was successful
   // NextAuth will handle the redirect automatically
   redirect('/dashboard');
+}
+
+export async function handleSignOut() {
+  await signOut({ redirectTo: '/' });
 }
