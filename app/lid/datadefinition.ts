@@ -3,7 +3,25 @@ export type User = {
   name: string;
   email: string;
   password: string;
+  avatar?: string;
+  target_score?: number;
+  current_level?: string;
+  join_date?: Date;
+  current_streak?: number;
+  created_at?: Date;
+  updated_at?: Date;
 };
+
+// Optional: Create a separate type for authentication that only includes required fields
+export type AuthUser = {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+};
+
+// Optional: Create a type for user profile (without password)
+export type UserProfile = Omit<User, 'password'>;
 
 
 interface JambExamRow {
