@@ -193,9 +193,34 @@ export  const upcomingGoals = [
       action: 'contact',
       href: '/contact'
     }
+,
+
   ];
 
   export const contactMethods = [
+    {
+      method: 'Email Support',
+      value: 'support@jambprep.com',
+      icon: '📧',
+      description: 'Get help within 24 hours'
+    },
+    {
+      method: 'WhatsApp',
+      value: '+234 800 JAMB HELP',
+      icon: '📱',
+      description: 'Quick responses during business hours'
+    },
+    {
+      method: 'Live Chat',
+      value: 'Available 9AM - 6PM',
+      icon: '💬',
+      description: 'Instant support from our team'
+    }
+  ];
+
+
+  
+  export const contactMethodsss = [
     {
       method: 'Email Support',
       value: 'support@jambprep.com',
