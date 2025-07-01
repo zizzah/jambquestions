@@ -22,41 +22,60 @@ export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
-      /**
-       * This function is called when the user tries to sign in.
-       * It validates the `credentials` object against the expected
-       * shape of the user's email and password. If the credentials are
-       * valid, it fetches the user's data from the database and checks
-       * if the provided password matches the hashed password from the
-       * database. If the passwords match, it returns the user data.
-       * If the credentials are invalid, or if the passwords don't match,
-       * it returns `null`.
-       * @param credentials The user's email and password.
-       * @returns The user data if the credentials are valid and the passwords match, otherwise `null`.
-       */
-async authorize(credentials): Promise<User | null> {
-  const parsedCredentials = z
-    .object({ email: z.string().email(), password: z.string().min(6) })
-    .safeParse(credentials);
+      async authorize(credentials) {
+        const parsedCredentials = z
+          .object({ email: z.string().email(), password: z.string().min(6) })
+          .safeParse(credentials);
 
-  if (!parsedCredentials.success) {
-    console.error('Failed to parse credentials:', parsedCredentials.error.flatten());
-    return null;
-  }
+        if (!parsedCredentials.success) {
+          console.error('Failed to parse credentials:', parsedCredentials.error.flatten());
+          return null;
+        }
 
-  const { email, password } = parsedCredentials.data;
-  const user = await getUser(email);
-   console.log(user)
-  if (!user) return null;
+        const { email, password } = parsedCredentials.data;
+        const user = await getUser(email);
+        console.log(user);
+        
+        if (!user) return null;
 
-  const passwordsMatch = await bcrypt.compare(password, user.password);
-  if (passwordsMatch) {
-    return user;
-  }
+        const passwordsMatch = await bcrypt.compare(password, user.password);
+        if (passwordsMatch) {
+          // Return user object without password
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            // Add any other user properties you need, but exclude password
+          };
+        }
 
-  console.error('Invalid credentials or password mismatch');
-  return null;
-}
+        console.error('Invalid credentials or password mismatch');
+        return null;
+      }
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.id as string;
+      }
+      return session;
+    },
+    async redirect({ url, baseUrl }) {
+      // Always redirect to dashboard after successful login
+      if (url.startsWith('/') || url.startsWith(baseUrl)) {
+        return url.startsWith('/dashboard') ? url : `${baseUrl}/dashboard`;
+      }
+      return `${baseUrl}/dashboard`;
+    },
+  },
+  session: {
+    strategy: 'jwt',
+  },
 });
