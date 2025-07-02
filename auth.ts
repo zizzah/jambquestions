@@ -6,6 +6,7 @@ import { z } from 'zod';
 import bcrypt from 'bcryptjs';
 import { User } from './app/lid/datadefinition';
 import postgres from 'postgres';
+import type { JWT } from 'next-auth/jwt';
 
 // Create a more robust database connection
 const sql = postgres(process.env.POSTGRES_URL!, { 
@@ -128,8 +129,8 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
     async signIn({ user, account, profile, isNewUser }) {
       console.log('SignIn event:', { user: user?.email, account: account?.provider });
     },
-    async signOut({ session, token }) {
-      console.log('SignOut event:', { user: session?.user?.email });
+    async signOut(message) {
+      console.log('SignOut event triggered');
     },
   },
 });
