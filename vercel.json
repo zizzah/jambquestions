@@ -1,8 +1,10 @@
 {
-  "functions": {
-    "app/api/auth/[...nextauth]/route.ts": {
-      "maxDuration": 10
+  "installCommand": "npm install --legacy-peer-deps",
+  "buildCommand": "npm install --legacy-peer-deps && npm run build",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
     }
-  },
-  "regions": ["iad1"]
+  ]
 }
