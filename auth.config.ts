@@ -13,7 +13,7 @@ export const authConfig = {
       const isOnRegister = nextUrl.pathname.startsWith('/register');
       const isOnForgotPassword = nextUrl.pathname.startsWith('/forgot-password');
       const isOnResetPassword = nextUrl.pathname.startsWith('/reset-password');
-      console.log(auth.user)
+      console.log(auth?.user)
       // Allow access to auth-related pages
       if (isOnLogin || isOnRegister || isOnForgotPassword || isOnResetPassword) {
         if (isLoggedIn) {
