@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import { ChevronDown, ChevronRight, Menu, X, Bell, Search, User, Settings, LogOut } from 'lucide-react';
 import { handleSignOut } from '@/app/lid/action/action';
+
 // Define interfaces for better type safety
 interface NavigationItem {
   title: string;
@@ -123,11 +125,23 @@ const navigationConfig: NavigationConfig = {
   ]
 };
 
-// Mock user data - In real app, this would come from auth context or API
-const userData: UserData = {
-  name: "Adunni Okafor",
-  email: "adunni@example.com",
-  avatar: "👩🏽‍🎓"
+// Helper function to get user avatar based on name or email
+const getUserAvatar = (name: string, email: string): string => {
+  // You can customize this logic based on your requirements
+  const firstLetter = name ? name.charAt(0).toUpperCase() : email.charAt(0).toUpperCase();
+  
+  // Simple avatar assignment based on first letter
+  const avatars = {
+    'A': '👩🏽‍🎓', 'B': '👨🏽‍🎓', 'C': '👩🏻‍🎓', 'D': '👨🏻‍🎓',
+    'E': '👩🏾‍🎓', 'F': '👨🏾‍🎓', 'G': '👩🏽‍🎓', 'H': '👨🏽‍🎓',
+    'I': '👩🏻‍🎓', 'J': '👨🏻‍🎓', 'K': '👩🏾‍🎓', 'L': '👨🏾‍🎓',
+    'M': '👩🏽‍🎓', 'N': '👨🏽‍🎓', 'O': '👩🏻‍🎓', 'P': '👨🏻‍🎓',
+    'Q': '👩🏾‍🎓', 'R': '👨🏾‍🎓', 'S': '👩🏽‍🎓', 'T': '👨🏽‍🎓',
+    'U': '👩🏻‍🎓', 'V': '👨🏻‍🎓', 'W': '👩🏾‍🎓', 'X': '👨🏾‍🎓',
+    'Y': '👩🏽‍🎓', 'Z': '👨🏽‍🎓'
+  };
+  
+  return avatars[firstLetter as keyof typeof avatars] || '👨🏽‍🎓';
 };
 
 // NavItem Component
@@ -202,11 +216,39 @@ const NavItem: React.FC<NavItemProps> = ({
 const DashboardLayouts: React.FC<DashboardLayoutProps> = ({ children }) => {
   const pathname = usePathname();
   const router = useRouter();
+  const { data: session, status } = useSession();
   
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState<boolean>(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
+
+  // Get user data from session
+  const userData: UserData = {
+    name: session?.user?.name || 'User',
+    email: session?.user?.email || 'user@example.com',
+    avatar: session?.user?.name && session?.user?.email 
+      ? getUserAvatar(session.user.name, session.user.email)
+      : '👨🏽‍🎓'
+  };
+
+  // Handle loading state
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 flex items-center justify-center">
+        <div className="text-white text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white mx-auto mb-4"></div>
+          <p>Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Handle unauthenticated state
+  if (status === 'unauthenticated') {
+    router.push('/login');
+    return null;
+  }
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -239,12 +281,6 @@ const DashboardLayouts: React.FC<DashboardLayoutProps> = ({ children }) => {
     router.push(href);
     setIsMobileMenuOpen(false);
   };
-
- /*  const handleSignOut = (): void => {
-    // Add your sign out logic here
-    console.log('Signing out...');
-    // Example: router.push('/login');
-  }; */
 
   // Generate breadcrumbs from current path
   const generateBreadcrumbs = (): string[] => {
@@ -425,7 +461,7 @@ const DashboardLayouts: React.FC<DashboardLayoutProps> = ({ children }) => {
                     <Settings size={16} />
                     <span>Settings</span>
                   </button>
-                  <div className="border-t border-white/10 mt-2 pt-2" onClick={handleSignOut}>
+                  <div className="border-t border-white/10 mt-2 pt-2">
                     <button 
                       className="w-full flex items-center space-x-3 px-4 py-2 hover:bg-white/10 transition-all text-left text-red-400"
                       onClick={handleSignOut}
