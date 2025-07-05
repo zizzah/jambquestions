@@ -223,6 +223,24 @@ const DashboardLayouts: React.FC<DashboardLayoutProps> = ({ children }) => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState<boolean>(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
 
+  // ALL HOOKS MUST BE CALLED BEFORE ANY EARLY RETURNS
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
+  // Close user menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      if (isUserMenuOpen) {
+        setIsUserMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [isUserMenuOpen]);
+
   // Get user data from session
   const userData: UserData = {
     name: session?.user?.name || 'User',
@@ -249,23 +267,6 @@ const DashboardLayouts: React.FC<DashboardLayoutProps> = ({ children }) => {
     router.push('/login');
     return null;
   }
-
-  // Close mobile menu when route changes
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [pathname]);
-
-  // Close user menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = () => {
-      if (isUserMenuOpen) {
-        setIsUserMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [isUserMenuOpen]);
 
   const toggleExpanded = (title: string): void => {
     const newExpanded = new Set(expandedItems);
