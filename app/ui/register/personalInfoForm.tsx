@@ -19,6 +19,14 @@ interface PersonalInfoFormProps {
   onShowPasswordToggle: () => void;
   onShowConfirmPasswordToggle: () => void;
   onNext: () => void;
+  errors?: {
+    fullName?: string[];
+    email?: string[];
+    password?: string[];
+    phone?: string[];
+    state?: string[];
+    targetScore?: string[];
+  };
 }
 
 export default function PersonalInfoForm({
@@ -28,7 +36,8 @@ export default function PersonalInfoForm({
   onInputChange,
   onShowPasswordToggle,
   onShowConfirmPasswordToggle,
-  onNext
+  onNext,
+  errors
 }: PersonalInfoFormProps) {
   return (
     <>
@@ -51,9 +60,16 @@ export default function PersonalInfoForm({
             value={formData.fullName}
             onChange={onInputChange}
             required
-            className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400/20 transition-all text-white placeholder-gray-400"
+            className={`w-full px-4 py-3 bg-white/5 backdrop-blur-sm border rounded-lg focus:outline-none focus:ring-2 transition-all text-white placeholder-gray-400 ${
+              errors?.fullName 
+                ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
+                : 'border-white/20 focus:border-yellow-400 focus:ring-yellow-400/20'
+            }`}
             placeholder="Enter your full name"
           />
+          {errors?.fullName && (
+            <p className="mt-1 text-red-400 text-sm">{errors.fullName[0]}</p>
+          )}
         </div>
 
         <div>
@@ -64,9 +80,16 @@ export default function PersonalInfoForm({
             value={formData.email}
             onChange={onInputChange}
             required
-            className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400/20 transition-all text-white placeholder-gray-400"
+            className={`w-full px-4 py-3 bg-white/5 backdrop-blur-sm border rounded-lg focus:outline-none focus:ring-2 transition-all text-white placeholder-gray-400 ${
+              errors?.email 
+                ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
+                : 'border-white/20 focus:border-yellow-400 focus:ring-yellow-400/20'
+            }`}
             placeholder="Enter your email"
           />
+          {errors?.email && (
+            <p className="mt-1 text-red-400 text-sm">{errors.email[0]}</p>
+          )}
         </div>
 
         <div>
@@ -77,9 +100,16 @@ export default function PersonalInfoForm({
             value={formData.phone}
             onChange={onInputChange}
             required
-            className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400/20 transition-all text-white placeholder-gray-400"
+            className={`w-full px-4 py-3 bg-white/5 backdrop-blur-sm border rounded-lg focus:outline-none focus:ring-2 transition-all text-white placeholder-gray-400 ${
+              errors?.phone 
+                ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
+                : 'border-white/20 focus:border-yellow-400 focus:ring-yellow-400/20'
+            }`}
             placeholder="e.g., 08012345678"
           />
+          {errors?.phone && (
+            <p className="mt-1 text-red-400 text-sm">{errors.phone[0]}</p>
+          )}
         </div>
 
         <div>
@@ -89,13 +119,20 @@ export default function PersonalInfoForm({
             value={formData.state}
             onChange={onInputChange}
             required
-            className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400/20 transition-all text-white"
+            className={`w-full px-4 py-3 bg-white/5 backdrop-blur-sm border rounded-lg focus:outline-none focus:ring-2 transition-all text-white ${
+              errors?.state 
+                ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
+                : 'border-white/20 focus:border-yellow-400 focus:ring-yellow-400/20'
+            }`}
           >
             <option value="" className="bg-gray-800">Select your state</option>
             {nigerianStates.map(state => (
               <option key={state} value={state} className="bg-gray-800">{state}</option>
             ))}
           </select>
+          {errors?.state && (
+            <p className="mt-1 text-red-400 text-sm">{errors.state[0]}</p>
+          )}
         </div>
 
         <div>
@@ -105,7 +142,11 @@ export default function PersonalInfoForm({
             value={formData.targetScore}
             onChange={onInputChange}
             required
-            className="w-full px-4 py-3 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400/20 transition-all text-white"
+            className={`w-full px-4 py-3 bg-white/5 backdrop-blur-sm border rounded-lg focus:outline-none focus:ring-2 transition-all text-white ${
+              errors?.targetScore 
+                ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
+                : 'border-white/20 focus:border-yellow-400 focus:ring-yellow-400/20'
+            }`}
           >
             <option value="" className="bg-gray-800">Select target score</option>
             <option value="200-250" className="bg-gray-800">200-250</option>
@@ -113,6 +154,9 @@ export default function PersonalInfoForm({
             <option value="300-350" className="bg-gray-800">300-350</option>
             <option value="350-400" className="bg-gray-800">350-400</option>
           </select>
+          {errors?.targetScore && (
+            <p className="mt-1 text-red-400 text-sm">{errors.targetScore[0]}</p>
+          )}
         </div>
 
         <div>
@@ -124,7 +168,11 @@ export default function PersonalInfoForm({
               value={formData.password}
               onChange={onInputChange}
               required
-              className="w-full px-4 py-3 pr-12 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400/20 transition-all text-white placeholder-gray-400"
+              className={`w-full px-4 py-3 pr-12 bg-white/5 backdrop-blur-sm border rounded-lg focus:outline-none focus:ring-2 transition-all text-white placeholder-gray-400 ${
+                errors?.password 
+                  ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
+                  : 'border-white/20 focus:border-yellow-400 focus:ring-yellow-400/20'
+              }`}
               placeholder="Enter your password"
             />
             <button
@@ -135,6 +183,9 @@ export default function PersonalInfoForm({
               {showPassword ? '🙈' : '👁️'}
             </button>
           </div>
+          {errors?.password && (
+            <p className="mt-1 text-red-400 text-sm">{errors.password[0]}</p>
+          )}
         </div>
 
         <div>

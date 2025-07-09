@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { availableSubjects } from '../../lid/data';
 
 interface SubjectSelectionFormProps {
@@ -16,6 +16,17 @@ export default function SubjectSelectionForm({
   onBack,
   onSubmit
 }: SubjectSelectionFormProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    try {
+      await onSubmit();
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       <div className="text-center mb-8">
@@ -35,12 +46,14 @@ export default function SubjectSelectionForm({
         {availableSubjects.map(subject => (
           <div
             key={subject.id}
-            onClick={() => onSubjectToggle(subject.id)}
+            onClick={() => !isSubmitting && onSubjectToggle(subject.id)}
             className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-300 ${
               selectedSubjects.includes(subject.id)
                 ? 'border-yellow-400 bg-yellow-400/20'
                 : 'border-white/20 bg-white/5 hover:border-white/40'
-            } ${subject.required ? 'opacity-100' : ''}`}
+            } ${subject.required ? 'opacity-100' : ''} ${
+              isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
@@ -72,23 +85,35 @@ export default function SubjectSelectionForm({
         <button
           type="button"
           onClick={onBack}
-          className="flex-1 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold rounded-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center"
+          disabled={isSubmitting}
+          className={`flex-1 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold rounded-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center ${
+            isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
         >
           <span className="mr-2 text-lg">←</span>
           Back
         </button>
         <button
           type="button"
-          onClick={onSubmit}
-          disabled={selectedSubjects.length !== 4}
+          onClick={handleSubmit}
+          disabled={selectedSubjects.length !== 4 || isSubmitting}
           className={`flex-1 py-4 font-bold rounded-lg transition-all duration-300 flex items-center justify-center ${
-            selectedSubjects.length === 4
+            selectedSubjects.length === 4 && !isSubmitting
               ? 'bg-gradient-to-r from-yellow-400 to-orange-500 text-black hover:shadow-2xl hover:shadow-yellow-500/25 transform hover:scale-105'
               : 'bg-gray-600 text-gray-400 cursor-not-allowed'
           }`}
         >
-          Create Account
-          <span className="ml-2 text-lg">✓</span>
+          {isSubmitting ? (
+            <>
+              <span className="animate-spin mr-2">⏳</span>
+              Creating Account...
+            </>
+          ) : (
+            <>
+              Create Account
+              <span className="ml-2 text-lg">✓</span>
+            </>
+          )}
         </button>
       </div>
     </>

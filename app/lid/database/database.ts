@@ -275,50 +275,75 @@ function getDefaultGoals() {
 // Function to create initial user data (call this after user registration)
 export async function createInitialUserData(userId: string) {
   try {
-    // Create initial statistics
-    await sql`
-      INSERT INTO user_user_statistics (user_id, total_questions, correct_answers, study_time, weekly_change)
-      VALUES (${userId}, 0, 0, 0, 0)
-      ON CONFLICT (user_id) DO NOTHING
-    `;
-
-    // Create initial progress
-    await sql`
-      INSERT INTO user_progress (user_id, streak)
-      VALUES (${userId}, 0)
-      ON CONFLICT (user_id) DO NOTHING
-    `;
-
-    // Create default subjects
-    const defaultSubjects = [
-      { name: 'Mathematics', icon: '📐', color: 'bg-blue-500' },
-      { name: 'English Language', icon: '📚', color: 'bg-green-500' },
-      { name: 'Physics', icon: '⚡', color: 'bg-purple-500' },
-      { name: 'Chemistry', icon: '🧪', color: 'bg-orange-500' }
-    ];
-
-    for (const subject of defaultSubjects) {
+    console.log('Creating initial user data for:', userId);
+    
+    // Use a transaction to ensure all operations succeed or fail together
+    await sql.begin(async (sql) => {
+      // Create initial statistics
       await sql`
-        INSERT INTO subjects (user_id, name, icon, color, progress, questions, recent)
-        VALUES (${userId}, ${subject.name}, ${subject.icon}, ${subject.color}, 0, 0, 'Not started')
+        INSERT INTO user_user_statistics (user_id, total_questions, correct_answers, study_time, weekly_change)
+        VALUES (${userId}, 0, 0, 0, 0)
+        ON CONFLICT (user_id) DO UPDATE SET
+          total_questions = EXCLUDED.total_questions,
+          correct_answers = EXCLUDED.correct_answers,
+          study_time = EXCLUDED.study_time,
+          weekly_change = EXCLUDED.weekly_change
       `;
-    }
 
-    // Create initial goals
-    const defaultGoals = [
-      { title: 'Complete first practice test', priority: 'high', progress: 0, deadline: '1 week' },
-      { title: 'Study Mathematics basics', priority: 'medium', progress: 0, deadline: '2 weeks' }
-    ];
-
-    for (const goal of defaultGoals) {
+      // Create initial progress
       await sql`
-        INSERT INTO goals (user_id, title, priority, progress, deadline)
-        VALUES (${userId}, ${goal.title}, ${goal.priority}, ${goal.progress}, ${goal.deadline})
+        INSERT INTO user_progress (user_id, streak)
+        VALUES (${userId}, 0)
+        ON CONFLICT (user_id) DO UPDATE SET
+          streak = EXCLUDED.streak
       `;
-    }
 
-    console.log('Initial user data created successfully');
+      // Check if subjects already exist
+      const existingSubjects = await sql`
+        SELECT COUNT(*) as count FROM subjects WHERE user_id = ${userId}
+      `;
+
+      if (existingSubjects[0].count === 0) {
+        // Create default subjects
+        const defaultSubjects = [
+          { name: 'Mathematics', icon: '📐', color: 'bg-blue-500' },
+          { name: 'English Language', icon: '📚', color: 'bg-green-500' },
+          { name: 'Physics', icon: '⚡', color: 'bg-purple-500' },
+          { name: 'Chemistry', icon: '🧪', color: 'bg-orange-500' }
+        ];
+
+        for (const subject of defaultSubjects) {
+          await sql`
+            INSERT INTO subjects (user_id, name, icon, color, progress, questions, recent)
+            VALUES (${userId}, ${subject.name}, ${subject.icon}, ${subject.color}, 0, 0, 'Not started')
+          `;
+        }
+      }
+
+      // Check if goals already exist
+      const existingGoals = await sql`
+        SELECT COUNT(*) as count FROM goals WHERE user_id = ${userId}
+      `;
+
+      if (existingGoals[0].count === 0) {
+        // Create initial goals
+        const defaultGoals = [
+          { title: 'Complete first practice test', priority: 'high', progress: 0, deadline: '1 week' },
+          { title: 'Study Mathematics basics', priority: 'medium', progress: 0, deadline: '2 weeks' }
+        ];
+
+        for (const goal of defaultGoals) {
+          await sql`
+            INSERT INTO goals (user_id, title, priority, progress, deadline)
+            VALUES (${userId}, ${goal.title}, ${goal.priority}, ${goal.progress}, ${goal.deadline})
+          `;
+        }
+      }
+    });
+
+    console.log('Initial user data created successfully for:', userId);
   } catch (error) {
     console.error('Error creating initial user data:', error);
+    throw error; // Re-throw to handle in calling function
   }
 }
