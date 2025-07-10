@@ -1,6 +1,5 @@
 'use client';
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { authenticate } from '@/app/lid/action/action';
 import { useFormState, useFormStatus } from 'react-dom';
@@ -28,6 +27,12 @@ function SubmitButton() {
 export default function LoginForm({ onSubmit }: LoginFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+
+  useEffect(() => {
+    if (errorMessage === 'success') {
+      window.location.href = '/dashboard';
+    }
+  }, [errorMessage]);
 
   return (
     <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 shadow-2xl">

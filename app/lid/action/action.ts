@@ -267,7 +267,7 @@ export async function authenticate(
   }
 
   // Finally, redirect after revalidation and data setup
-  redirect('/dashboard');
+  return'success';
 }
 
 // ... (rest of your action.ts)

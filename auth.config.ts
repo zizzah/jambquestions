@@ -25,7 +25,7 @@ export const authConfig = {
       // Protect dashboard routes
       if (isOnDashboard) {
         if (isLoggedIn) return true;
-        return false; // Redirect unauthenticated users to login page
+        return Response.redirect(new URL('/login', nextUrl)); // Redirect unauthenticated users to login page
       }
       
       // Allow access to other pages

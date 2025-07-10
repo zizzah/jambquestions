@@ -23,8 +23,8 @@ async function DashboardContent({ userId }: { userId: string }) {
     const dashboardData = await getDashboardData(userId);
     
     // Pass the data to the client component
-    console.log(dashboardData)
-    return <DashboardClient  />;
+    console.log()
+    return <DashboardClient data={dashboardData} />;
   } catch (error) {
     console.error('Error loading dashboard:', error);
     
