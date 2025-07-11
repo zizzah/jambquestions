@@ -204,18 +204,18 @@ function getDefaultSubjects(userSubjects: unknown) {
   let subjectsArray: string[] = [];
   
   if (Array.isArray(userSubjects)) {
-    subjectsArray = userSubjects as string[];
+    subjectsArray = userSubjects;
   } else if (typeof userSubjects === 'string') {
     try {
-      // Parse JSON string like '["english","literature","geography","government"]'
+      // Try to parse as JSON if it's a string
       subjectsArray = JSON.parse(userSubjects);
     } catch {
       // If parsing fails, treat as comma-separated string
-      subjectsArray = (userSubjects as string).split(',').map((s: string) => s.trim()).filter((s: string) => s);
+      subjectsArray = userSubjects.split(',').map(s => s.trim()).filter(s => s);
     }
   } else if (userSubjects && typeof userSubjects === 'object') {
     // If it's an object, try to extract values
-    subjectsArray = Object.values(userSubjects as Record<string, unknown>).filter((v: unknown) => typeof v === 'string') as string[];
+    subjectsArray = Object.values(userSubjects).filter(v => typeof v === 'string');
   }
   
   // Ensure we have an array
@@ -224,29 +224,26 @@ function getDefaultSubjects(userSubjects: unknown) {
   }
 
   const subjectConfigs = {
-    'english': { icon: '📚', color: 'bg-green-500', name: 'English Language' },
-    'literature': { icon: '📖', color: 'bg-pink-500', name: 'Literature' },
-    'geography': { icon: '🌍', color: 'bg-indigo-500', name: 'Geography' },
-    'government': { icon: '⚖️', color: 'bg-red-500', name: 'Government' },
-    'mathematics': { icon: '📐', color: 'bg-blue-500', name: 'Mathematics' },
-    'physics': { icon: '⚡', color: 'bg-purple-500', name: 'Physics' },
-    'chemistry': { icon: '🧪', color: 'bg-orange-500', name: 'Chemistry' },
-    'biology': { icon: '🧬', color: 'bg-teal-500', name: 'Biology' },
-    'economics': { icon: '💰', color: 'bg-yellow-500', name: 'Economics' }
+    'Mathematics': { icon: '📐', color: 'bg-blue-500' },
+    'English Language': { icon: '📚', color: 'bg-green-500' },
+    'Physics': { icon: '⚡', color: 'bg-purple-500' },
+    'Chemistry': { icon: '🧪', color: 'bg-orange-500' },
+    'Biology': { icon: '🧬', color: 'bg-teal-500' },
+    'Economics': { icon: '💰', color: 'bg-yellow-500' },
+    'Government': { icon: '⚖️', color: 'bg-red-500' },
+    'Literature': { icon: '📖', color: 'bg-pink-500' }
   };
 
-  return subjectsArray.map((subject: string) => {
-    const config = subjectConfigs[subject.toLowerCase() as keyof typeof subjectConfigs];
-    return {
-      id: subject.toLowerCase().replace(/\s+/g, '-'),
-      name: config?.name || subject.charAt(0).toUpperCase() + subject.slice(1),
-      icon: config?.icon || '📚',
-      color: config?.color || 'bg-gray-500',
-      progress: 0,
-      questions: 0,
-      recent: 'Not started'
-    };
-  });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  return subjectsArray.map((subject, index) => ({
+    id: subject.toLowerCase().replace(/\s+/g, '-'),
+    name: subject,
+    icon: subjectConfigs[subject as keyof typeof subjectConfigs]?.icon || '📚',
+    color: subjectConfigs[subject as keyof typeof subjectConfigs]?.color || 'bg-gray-500',
+    progress: 0,
+    questions: 0,
+    recent: 'Not started'
+  }));
 }
 
 // Default activity if none exists
@@ -308,20 +305,18 @@ export async function createInitialUserData(userId: string) {
     
     const { subjects, target_score } = userData[0];
     
-    // Parse subjects properly - handle JSON string format
+    // Parse subjects properly
     let userSubjects: string[] = [];
     if (Array.isArray(subjects)) {
-      userSubjects = subjects as string[];
+      userSubjects = subjects;
     } else if (typeof subjects === 'string') {
       try {
-        // Parse JSON string like '["english","literature","geography","government"]'
         userSubjects = JSON.parse(subjects);
       } catch {
-        // If parsing fails, treat as comma-separated string
-        userSubjects = (subjects as string).split(',').map((s: string) => s.trim()).filter((s: string) => s);
+        userSubjects = subjects.split(',').map(s => s.trim()).filter(s => s);
       }
     } else if (subjects && typeof subjects === 'object') {
-      userSubjects = Object.values(subjects as Record<string, unknown>).filter((v: unknown) => typeof v === 'string') as string[];
+      userSubjects = Object.values(subjects).filter(v => typeof v === 'string');
     }
     
     // Ensure we have an array
@@ -352,24 +347,21 @@ export async function createInitialUserData(userId: string) {
 
       // Create subjects based on user's selection
       const subjectConfigs = {
-        'english': { icon: '📚', color: 'bg-green-500', name: 'English Language' },
-        'literature': { icon: '📖', color: 'bg-pink-500', name: 'Literature' },
-        'geography': { icon: '🌍', color: 'bg-indigo-500', name: 'Geography' },
-        'government': { icon: '⚖️', color: 'bg-red-500', name: 'Government' },
-        'mathematics': { icon: '📐', color: 'bg-blue-500', name: 'Mathematics' },
-        'physics': { icon: '⚡', color: 'bg-purple-500', name: 'Physics' },
-        'chemistry': { icon: '🧪', color: 'bg-orange-500', name: 'Chemistry' },
-        'biology': { icon: '🧬', color: 'bg-teal-500', name: 'Biology' },
-        'economics': { icon: '💰', color: 'bg-yellow-500', name: 'Economics' }
+        'Mathematics': { icon: '📐', color: 'bg-blue-500' },
+        'English Language': { icon: '📚', color: 'bg-green-500' },
+        'Physics': { icon: '⚡', color: 'bg-purple-500' },
+        'Chemistry': { icon: '🧪', color: 'bg-orange-500' },
+        'Biology': { icon: '🧬', color: 'bg-teal-500' },
+        'Economics': { icon: '💰', color: 'bg-yellow-500' },
+        'Government': { icon: '⚖️', color: 'bg-red-500' },
+        'Literature': { icon: '📖', color: 'bg-pink-500' }
       };
 
       for (const subject of userSubjects) {
-        const config = subjectConfigs[subject.toLowerCase() as keyof typeof subjectConfigs];
-        const displayName = config?.name || subject.charAt(0).toUpperCase() + subject.slice(1);
-        
+        const config = subjectConfigs[subject as keyof typeof subjectConfigs];
         await sql`
           INSERT INTO subjects (user_id, name, icon, color, progress, questions, recent)
-          VALUES (${userId}, ${displayName}, ${config?.icon || '📚'}, ${config?.color || 'bg-gray-500'}, 0, 0, 'Not started')
+          VALUES (${userId}, ${subject}, ${config?.icon || '📚'}, ${config?.color || 'bg-gray-500'}, 0, 0, 'Not started')
           ON CONFLICT (user_id, name) DO UPDATE SET
             icon = EXCLUDED.icon,
             color = EXCLUDED.color
