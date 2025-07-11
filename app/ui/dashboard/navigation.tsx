@@ -51,32 +51,32 @@ const navigationConfig: NavigationConfig = {
     },
     {
       title: "Practice",
-      href: "/practice",
+      href: "/dashboard/practice",
       icon: "🎯",
       description: "Practice questions and sessions",
       children: [
-        { title: "All Subjects", href: "/practice", icon: "📋", description: "All subjects overview" },
-        { title: "Mathematics", href: "/practice/mathematics", icon: "🔢", description: "Math practice" },
-        { title: "English", href: "/practice/english", icon: "📝", description: "English practice" },
-        { title: "Physics", href: "/practice/physics", icon: "⚛️", description: "Physics practice" },
+        { title: "All Subjects", href: "/dashboard/practice", icon: "📋", description: "All subjects overview" },
+/*         { title: "Mathematics", href: "/dashboard/practice/mathematics", icon: "🔢", description: "Math practice" },
+        { title: "English", href: "/dashboard/practice/english", icon: "📝", description: "English practice" },
+        { title: "Physics", href: "/dashboard/practice/physics", icon: "⚛️", description: "Physics practice" },
         { title: "Chemistry", href: "/practice/chemistry", icon: "🧪", description: "Chemistry practice" },
         { title: "Biology", href: "/practice/biology", icon: "🧬", description: "Biology practice" },
         { title: "Literature", href: "/practice/literature", icon: "📖", description: "Literature practice" }
-      ]
+ */      ]
     },
     {
-      title: "Mock Exams",
-      href: "/mock-exams",
+      title: "Mock Test",
+      href: "/dashboard/mock-test",
       icon: "📝",
       description: "Full exam simulations"
     },
     {
       title: "Subjects",
-      href: "/subjects",
+      href: "/dashboard/practice",
       icon: "📚",
       description: "Subject-wise learning",
       children: [
-        { title: "All Subjects", href: "/subjects", icon: "📋", description: "All subjects overview" },
+        { title: "All Subjects", href: "/dashboard/subjects", icon: "📋", description: "All subjects overview" },
         { title: "Mathematics", href: "/subjects/mathematics", icon: "🔢", description: "Math learning" },
         { title: "English", href: "/subjects/english", icon: "📝", description: "English learning" },
         { title: "Physics", href: "/subjects/physics", icon: "⚛️", description: "Physics learning" },
@@ -87,18 +87,18 @@ const navigationConfig: NavigationConfig = {
     },
     {
       title: "Analytics",
-      href: "/analytics",
+      href: "/dashboard/analysis",
       icon: "📊",
       description: "Performance insights",
       children: [
-        { title: "Overview", href: "/analytics", icon: "📈", description: "Analytics overview" },
-        { title: "Performance", href: "/analytics/performance", icon: "🎯", description: "Performance metrics" },
-        { title: "Reports", href: "/analytics/reports", icon: "📋", description: "Detailed reports" }
+        { title: "Overview", href: "/dashboard/analysis", icon: "📈", description: "Analytics overview" },
+        { title: "Performance", href: "/dashboard/analytics/performance", icon: "🎯", description: "Performance metrics" },
+        { title: "Reports", href: "/dashboard/analytics/reports", icon: "📋", description: "Detailed reports" }
       ]
     },
     {
       title: "Study Materials",
-      href: "/study-materials",
+      href: "/dashboard/study-material",
       icon: "📖",
       description: "Learning resources"
     }
@@ -106,13 +106,13 @@ const navigationConfig: NavigationConfig = {
   secondary: [
     {
       title: "Goals",
-      href: "/goals",
+      href: "/dashboard/goals",
       icon: "🎯",
       description: "Track your objectives"
     },
     {
       title: "Planner",
-      href: "/planner",
+      href: "/dashboard/planner",
       icon: "📅",
       description: "Study schedule"
     },

@@ -7,19 +7,19 @@ export function QuickActions() {
   const router = useRouter();
 
   const handleStartPractice = () => {
-    router.push('/practice');
+    router.push('dashboard/practice');
   };
 
   const handleTakeMockExam = () => {
-    router.push('/mock-exam');
+    router.push('dashboard/mock-test');
   };
 
   const handleViewAnalytics = () => {
-    router.push('/analytics');
+    router.push('dashboard/analysis');
   };
 
   const handleStudyMaterials = () => {
-    router.push('/study-materials');
+    router.push('dashboard/study-material');
   };
 
   return (
