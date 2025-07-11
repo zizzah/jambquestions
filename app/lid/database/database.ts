@@ -211,7 +211,11 @@ function getDefaultSubjects(userSubjects: unknown) {
       subjectsArray = JSON.parse(userSubjects);
     } catch {
       // If parsing fails, treat as comma-separated string
-      subjectsArray = userSubjects.split(',').map(s => s.trim()).filter(s => s);
+      if (typeof userSubjects === 'string') {
+        subjectsArray = userSubjects.split(',').map(s => s.trim()).filter(s => s);
+      } else {
+        subjectsArray = [];
+      }
     }
   } else if (userSubjects && typeof userSubjects === 'object') {
     // If it's an object, try to extract values
@@ -313,7 +317,11 @@ export async function createInitialUserData(userId: string) {
       try {
         userSubjects = JSON.parse(subjects);
       } catch {
-        userSubjects = subjects.split(',').map(s => s.trim()).filter(s => s);
+        if (typeof subjects === 'string') {
+          userSubjects = subjects.split(',').map(s => s.trim()).filter(s => s);
+        } else {
+          userSubjects = [];
+        }
       }
     } else if (subjects && typeof subjects === 'object') {
       userSubjects = Object.values(subjects).filter(v => typeof v === 'string');
