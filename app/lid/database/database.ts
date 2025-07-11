@@ -199,12 +199,12 @@ function formatStats(statsRow: StatsRow): Stat[] {
 }
 
 // Default subjects based on user's selected subjects
-function getDefaultSubjects(userSubjects: any) {
+function getDefaultSubjects(userSubjects: unknown) {
   // Handle different data types for subjects
   let subjectsArray: string[] = [];
   
   if (Array.isArray(userSubjects)) {
-    subjectsArray = userSubjects;
+    subjectsArray = userSubjects as string[];
   } else if (typeof userSubjects === 'string') {
     try {
       // Parse JSON string like '["english","literature","geography","government"]'
@@ -215,7 +215,7 @@ function getDefaultSubjects(userSubjects: any) {
     }
   } else if (userSubjects && typeof userSubjects === 'object') {
     // If it's an object, try to extract values
-    subjectsArray = Object.values(userSubjects).filter((v: any) => typeof v === 'string');
+    subjectsArray = Object.values(userSubjects as Record<string, unknown>).filter((v: unknown) => typeof v === 'string') as string[];
   }
   
   // Ensure we have an array
@@ -311,7 +311,7 @@ export async function createInitialUserData(userId: string) {
     // Parse subjects properly - handle JSON string format
     let userSubjects: string[] = [];
     if (Array.isArray(subjects)) {
-      userSubjects = subjects;
+      userSubjects = subjects as string[];
     } else if (typeof subjects === 'string') {
       try {
         // Parse JSON string like '["english","literature","geography","government"]'
@@ -321,7 +321,7 @@ export async function createInitialUserData(userId: string) {
         userSubjects = (subjects as string).split(',').map((s: string) => s.trim()).filter((s: string) => s);
       }
     } else if (subjects && typeof subjects === 'object') {
-      userSubjects = Object.values(subjects).filter((v: any) => typeof v === 'string');
+      userSubjects = Object.values(subjects as Record<string, unknown>).filter((v: unknown) => typeof v === 'string') as string[];
     }
     
     // Ensure we have an array
