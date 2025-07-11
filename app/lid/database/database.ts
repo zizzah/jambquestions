@@ -16,7 +16,9 @@ interface UserRow {
   name: string;
   email: string;
   avatar?: string;
-}
+  subjects: string[];
+  target_score:string;
+} 
 
 interface StatsRow {
   total_questions: number;
@@ -79,7 +81,7 @@ export async function getDashboardData(userId: string): Promise<DashboardData> {
       streakQuery
     ] = await Promise.all([
       sql<UserRow[]>`
-        SELECT id, name, email, avatar 
+        SELECT id, name, email, avatar, subjects, target_score
         FROM users 
         WHERE id = ${userId}
       `,
@@ -149,9 +151,9 @@ export async function getDashboardData(userId: string): Promise<DashboardData> {
     const dashboardData: DashboardData = {
       user: userQuery[0],
       stats: formatStats(statsData),
-      subjects: subjectsQuery.length > 0 ? subjectsQuery : getDefaultSubjects(),
+      subjects: subjectsQuery.length > 0 ? subjectsQuery : getDefaultSubjects(userQuery[0].subjects),
       recentActivity: activityQuery.length > 0 ? activityQuery : getDefaultActivity(),
-      upcomingGoals: goalsQuery.length > 0 ? goalsQuery : getDefaultGoals(),
+      upcomingGoals: goalsQuery.length > 0 ? goalsQuery : getDefaultGoals(userQuery[0].target_score),
       notifications: notificationsQuery.length > 0 ? notificationsQuery : [],
       currentStreak: streakQuery.length > 0 ? streakQuery[0].streak : 0
     };
@@ -196,46 +198,55 @@ function formatStats(statsRow: StatsRow): Stat[] {
   ];
 }
 
-// Default subjects if none exist in database
-function getDefaultSubjects() {
-  return [
-    {
-      id: 'math',
-      name: 'Mathematics',
-      icon: '📐',
-      color: 'bg-blue-500',
-      progress: 0,
-      questions: 0,
-      recent: 'Not started'
-    },
-    {
-      id: 'english',
-      name: 'English Language',
-      icon: '📚',
-      color: 'bg-green-500',
-      progress: 0,
-      questions: 0,
-      recent: 'Not started'
-    },
-    {
-      id: 'physics',
-      name: 'Physics',
-      icon: '⚡',
-      color: 'bg-purple-500',
-      progress: 0,
-      questions: 0,
-      recent: 'Not started'
-    },
-    {
-      id: 'chemistry',
-      name: 'Chemistry',
-      icon: '🧪',
-      color: 'bg-orange-500',
-      progress: 0,
-      questions: 0,
-      recent: 'Not started'
+// Default subjects based on user's selected subjects
+function getDefaultSubjects(userSubjects: any) {
+  // Handle different data types for subjects
+  let subjectsArray: string[] = [];
+  
+  if (Array.isArray(userSubjects)) {
+    subjectsArray = userSubjects;
+  } else if (typeof userSubjects === 'string') {
+    try {
+      // Parse JSON string like '["english","literature","geography","government"]'
+      subjectsArray = JSON.parse(userSubjects);
+    } catch {
+      // If parsing fails, treat as comma-separated string
+      subjectsArray = (userSubjects as string).split(',').map((s: string) => s.trim()).filter((s: string) => s);
     }
-  ];
+  } else if (userSubjects && typeof userSubjects === 'object') {
+    // If it's an object, try to extract values
+    subjectsArray = Object.values(userSubjects).filter((v: any) => typeof v === 'string');
+  }
+  
+  // Ensure we have an array
+  if (!Array.isArray(subjectsArray)) {
+    subjectsArray = [];
+  }
+
+  const subjectConfigs = {
+    'english': { icon: '📚', color: 'bg-green-500', name: 'English Language' },
+    'literature': { icon: '📖', color: 'bg-pink-500', name: 'Literature' },
+    'geography': { icon: '🌍', color: 'bg-indigo-500', name: 'Geography' },
+    'government': { icon: '⚖️', color: 'bg-red-500', name: 'Government' },
+    'mathematics': { icon: '📐', color: 'bg-blue-500', name: 'Mathematics' },
+    'physics': { icon: '⚡', color: 'bg-purple-500', name: 'Physics' },
+    'chemistry': { icon: '🧪', color: 'bg-orange-500', name: 'Chemistry' },
+    'biology': { icon: '🧬', color: 'bg-teal-500', name: 'Biology' },
+    'economics': { icon: '💰', color: 'bg-yellow-500', name: 'Economics' }
+  };
+
+  return subjectsArray.map((subject: string) => {
+    const config = subjectConfigs[subject.toLowerCase() as keyof typeof subjectConfigs];
+    return {
+      id: subject.toLowerCase().replace(/\s+/g, '-'),
+      name: config?.name || subject.charAt(0).toUpperCase() + subject.slice(1),
+      icon: config?.icon || '📚',
+      color: config?.color || 'bg-gray-500',
+      progress: 0,
+      questions: 0,
+      recent: 'Not started'
+    };
+  });
 }
 
 // Default activity if none exists
@@ -252,19 +263,28 @@ function getDefaultActivity() {
   ];
 }
 
-// Default goals if none exist
-function getDefaultGoals() {
+// Default goals based on user's target score
+function getDefaultGoals(targetScore: string) {
+  const target = parseInt(targetScore) || 250; // Default to 250 if not set
+  
   return [
     {
       id: '1',
+      title: `Achieve ${target} target score`,
+      priority: 'high' as const,
+      progress: 0,
+      deadline: '3 months'
+    },
+    {
+      id: '2',
       title: 'Complete first practice test',
       priority: 'high' as const,
       progress: 0,
       deadline: '1 week'
     },
     {
-      id: '2',
-      title: 'Study Mathematics basics',
+      id: '3',
+      title: 'Study core subjects daily',
       priority: 'medium' as const,
       progress: 0,
       deadline: '2 weeks'
@@ -276,6 +296,38 @@ function getDefaultGoals() {
 export async function createInitialUserData(userId: string) {
   try {
     console.log('Creating initial user data for:', userId);
+    
+    // Get user data to access selected subjects and target score
+    const userData = await sql<UserRow[]>`
+      SELECT subjects, target_score FROM users WHERE id = ${userId}
+    `;
+    
+    if (userData.length === 0) {
+      throw new Error(`User with ID ${userId} not found`);
+    }
+    
+    const { subjects, target_score } = userData[0];
+    
+    // Parse subjects properly - handle JSON string format
+    let userSubjects: string[] = [];
+    if (Array.isArray(subjects)) {
+      userSubjects = subjects;
+    } else if (typeof subjects === 'string') {
+      try {
+        // Parse JSON string like '["english","literature","geography","government"]'
+        userSubjects = JSON.parse(subjects);
+      } catch {
+        // If parsing fails, treat as comma-separated string
+        userSubjects = (subjects as string).split(',').map((s: string) => s.trim()).filter((s: string) => s);
+      }
+    } else if (subjects && typeof subjects === 'object') {
+      userSubjects = Object.values(subjects).filter((v: any) => typeof v === 'string');
+    }
+    
+    // Ensure we have an array
+    if (!Array.isArray(userSubjects)) {
+      userSubjects = [];
+    }
     
     // Use a transaction to ensure all operations succeed or fail together
     await sql.begin(async (sql) => {
@@ -298,46 +350,49 @@ export async function createInitialUserData(userId: string) {
           streak = EXCLUDED.streak
       `;
 
-      // Check if subjects already exist
-      const existingSubjects = await sql`
-        SELECT COUNT(*) as count FROM subjects WHERE user_id = ${userId}
-      `;
+      // Create subjects based on user's selection
+      const subjectConfigs = {
+        'english': { icon: '📚', color: 'bg-green-500', name: 'English Language' },
+        'literature': { icon: '📖', color: 'bg-pink-500', name: 'Literature' },
+        'geography': { icon: '🌍', color: 'bg-indigo-500', name: 'Geography' },
+        'government': { icon: '⚖️', color: 'bg-red-500', name: 'Government' },
+        'mathematics': { icon: '📐', color: 'bg-blue-500', name: 'Mathematics' },
+        'physics': { icon: '⚡', color: 'bg-purple-500', name: 'Physics' },
+        'chemistry': { icon: '🧪', color: 'bg-orange-500', name: 'Chemistry' },
+        'biology': { icon: '🧬', color: 'bg-teal-500', name: 'Biology' },
+        'economics': { icon: '💰', color: 'bg-yellow-500', name: 'Economics' }
+      };
 
-      if (existingSubjects[0].count === 0) {
-        // Create default subjects
-        const defaultSubjects = [
-          { name: 'Mathematics', icon: '📐', color: 'bg-blue-500' },
-          { name: 'English Language', icon: '📚', color: 'bg-green-500' },
-          { name: 'Physics', icon: '⚡', color: 'bg-purple-500' },
-          { name: 'Chemistry', icon: '🧪', color: 'bg-orange-500' }
-        ];
-
-        for (const subject of defaultSubjects) {
-          await sql`
-            INSERT INTO subjects (user_id, name, icon, color, progress, questions, recent)
-            VALUES (${userId}, ${subject.name}, ${subject.icon}, ${subject.color}, 0, 0, 'Not started')
-          `;
-        }
+      for (const subject of userSubjects) {
+        const config = subjectConfigs[subject.toLowerCase() as keyof typeof subjectConfigs];
+        const displayName = config?.name || subject.charAt(0).toUpperCase() + subject.slice(1);
+        
+        await sql`
+          INSERT INTO subjects (user_id, name, icon, color, progress, questions, recent)
+          VALUES (${userId}, ${displayName}, ${config?.icon || '📚'}, ${config?.color || 'bg-gray-500'}, 0, 0, 'Not started')
+          ON CONFLICT (user_id, name) DO UPDATE SET
+            icon = EXCLUDED.icon,
+            color = EXCLUDED.color
+        `;
       }
 
-      // Check if goals already exist
-      const existingGoals = await sql`
-        SELECT COUNT(*) as count FROM goals WHERE user_id = ${userId}
-      `;
+      // Create goals based on target score
+      const target = parseInt(target_score) || 250;
+      const defaultGoals = [
+        { title: `Achieve ${target} target score`, priority: 'high', progress: 0, deadline: '3 months' },
+        { title: 'Complete first practice test', priority: 'high', progress: 0, deadline: '1 week' },
+        { title: 'Study core subjects daily', priority: 'medium', progress: 0, deadline: '2 weeks' }
+      ];
 
-      if (existingGoals[0].count === 0) {
-        // Create initial goals
-        const defaultGoals = [
-          { title: 'Complete first practice test', priority: 'high', progress: 0, deadline: '1 week' },
-          { title: 'Study Mathematics basics', priority: 'medium', progress: 0, deadline: '2 weeks' }
-        ];
-
-        for (const goal of defaultGoals) {
-          await sql`
-            INSERT INTO goals (user_id, title, priority, progress, deadline)
-            VALUES (${userId}, ${goal.title}, ${goal.priority}, ${goal.progress}, ${goal.deadline})
-          `;
-        }
+      for (const goal of defaultGoals) {
+        await sql`
+          INSERT INTO goals (user_id, title, priority, progress, deadline)
+          VALUES (${userId}, ${goal.title}, ${goal.priority}, ${goal.progress}, ${goal.deadline})
+          ON CONFLICT (user_id, title) DO UPDATE SET
+            priority = EXCLUDED.priority,
+            progress = EXCLUDED.progress,
+            deadline = EXCLUDED.deadline
+        `;
       }
     });
 

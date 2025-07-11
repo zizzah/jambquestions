@@ -18,6 +18,7 @@ export default function SubjectSelectionForm({
 }: SubjectSelectionFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
@@ -94,8 +95,7 @@ export default function SubjectSelectionForm({
           Back
         </button>
         <button
-          type="button"
-          onClick={handleSubmit}
+          type="submit"
           disabled={selectedSubjects.length !== 4 || isSubmitting}
           className={`flex-1 py-4 font-bold rounded-lg transition-all duration-300 flex items-center justify-center ${
             selectedSubjects.length === 4 && !isSubmitting

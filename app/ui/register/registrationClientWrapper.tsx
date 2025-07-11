@@ -189,7 +189,9 @@ export default function RegistrationClientWrapper({ children }: RegistrationClie
   useEffect(() => {
     if (state.success) {
       alert('Registration successful! Welcome to JAMBPrep!');
-      // The server action will handle the redirect
+      setTimeout(() => {
+        window.location.href = '/login'; // or your actual login route
+      }, 1500); // 1.5 seconds delay
     }
   }, [state.success]);
 
