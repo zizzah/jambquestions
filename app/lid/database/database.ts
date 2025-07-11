@@ -318,7 +318,7 @@ export async function createInitialUserData(userId: string) {
         userSubjects = JSON.parse(subjects);
       } catch {
         if (typeof subjects === 'string') {
-          userSubjects = subjects.split(',').map(s => s.trim()).filter(s => s);
+          userSubjects = (subjects as string).split(',').map(s => s.trim()).filter(s => s);
         } else {
           userSubjects = [];
         }
