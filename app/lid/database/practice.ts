@@ -114,7 +114,7 @@ export interface PracticeSession {
 }
 
 // Helper function to parse options from different formats
-function parseOptions(options: any): { A: string; B: string; C: string; D: string } {
+function parseOptions(options: unknown): { A: string; B: string; C: string; D: string } {
   if (typeof options === 'string') {
     try {
       return JSON.parse(options);
@@ -126,11 +126,12 @@ function parseOptions(options: any): { A: string; B: string; C: string; D: strin
   
   if (typeof options === 'object' && options !== null) {
     // If it's already an object, return it directly
+    const opts = options as Record<string, string>;
     return {
-      A: options.A || 'Option A',
-      B: options.B || 'Option B', 
-      C: options.C || 'Option C',
-      D: options.D || 'Option D'
+      A: opts.A || 'Option A',
+      B: opts.B || 'Option B', 
+      C: opts.C || 'Option C',
+      D: opts.D || 'Option D'
     };
   }
   
@@ -200,8 +201,8 @@ export async function getUserSubjects(userId: string): Promise<UserSubject[]> {
           bgColor: config.bgColor,
           questionCount
         });
-      } catch (error) {
-        console.error(`Error getting question count for ${subjectName}:`, error);
+      } catch (dbError) {
+        console.error(`Error getting question count for ${subjectName}:`, dbError);
         // Add subject with 0 count if table doesn't exist
         const config = subjectConfigs[subjectName.toLowerCase()] || { 
           icon: '📚', 
@@ -253,8 +254,8 @@ export async function getSubjectQuestions(subjectName: string, limit: number = 1
         ORDER BY RANDOM()
         LIMIT ${limit}
       `;
-    } catch (error) {
-      console.log(`Standard query failed for ${tableName}, trying alternative structure`);
+    } catch (firstError) {
+      console.log(`Standard query failed for ${tableName}, trying alternative structure`, firstError);
       // Try alternative structure with question_id
       questions = await sql`
         SELECT 
@@ -337,8 +338,8 @@ export async function savePracticeResults(
           study_time = user_user_statistics.study_time + ${durationMinutes}
       `;
       console.log('Updated user_user_statistics successfully');
-    } catch (error) {
-      console.log('user_user_statistics table not found, trying user_statistics');
+    } catch (statsError) {
+      console.log('user_user_statistics table not found, trying user_statistics', statsError);
       try {
         await sql`
           INSERT INTO user_statistics (user_id, total_questions, correct_answers, study_time)
@@ -349,8 +350,8 @@ export async function savePracticeResults(
             study_time = user_statistics.study_time + ${durationMinutes}
         `;
         console.log('Updated user_statistics successfully');
-      } catch (statsError) {
-        console.log('Neither statistics table exists, skipping statistics update');
+      } catch (secondStatsError) {
+        console.log('Neither statistics table exists, skipping statistics update', secondStatsError);
       }
     }
 
@@ -362,8 +363,8 @@ export async function savePracticeResults(
         VALUES (${userId}, 'practice', ${`Completed ${subjectName} practice session`}, ${(score / totalQuestions) * 100})
       `;
       console.log('Logged activity with score_achieved successfully');
-    } catch (error) {
-      console.log('score_achieved column not found, trying alternative structure');
+    } catch (activityError) {
+      console.log('score_achieved column not found, trying alternative structure', activityError);
       try {
         // Try with different column names
         await sql`
@@ -371,8 +372,8 @@ export async function savePracticeResults(
           VALUES (${userId}, 'practice', ${`Completed ${subjectName} practice session - Score: ${Math.round((score / totalQuestions) * 100)}%`})
         `;
         console.log('Logged activity with alternative structure successfully');
-      } catch (activityError) {
-        console.log('activity_log table not found or has different structure, skipping activity log');
+      } catch (secondActivityError) {
+        console.log('activity_log table not found or has different structure, skipping activity log', secondActivityError);
       }
     }
 
@@ -389,8 +390,8 @@ export async function savePracticeResults(
         WHERE user_id = ${userId} AND name = ${subjectName}
       `;
       console.log('Updated subjects table successfully');
-    } catch (error) {
-      console.log('Standard subjects update failed, trying alternative structures');
+    } catch (subjectError) {
+      console.log('Standard subjects update failed, trying alternative structures', subjectError);
       
       try {
         // Try with different column names
@@ -400,8 +401,8 @@ export async function savePracticeResults(
           WHERE user_id = ${userId} AND subject_name = ${subjectName}
         `;
         console.log('Updated subjects with alternative column names successfully');
-      } catch (error2) {
-        console.log('Alternative subjects update failed, trying to create subject record');
+      } catch (altSubjectError) {
+        console.log('Alternative subjects update failed, trying to create subject record', altSubjectError);
         
         try {
           // Try to insert a new subject record if it doesn't exist
@@ -420,8 +421,8 @@ export async function savePracticeResults(
               recent = ${recentActivity}
           `;
           console.log('Created/updated subject record successfully');
-        } catch (error3) {
-          console.log('Could not update subjects table, skipping subject progress update');
+        } catch (insertError) {
+          console.log('Could not update subjects table, skipping subject progress update', insertError);
         }
       }
     }
@@ -435,8 +436,8 @@ export async function savePracticeResults(
           streak = user_progress.streak + 1
       `;
       console.log('Updated user progress successfully');
-    } catch (error) {
-      console.log('user_progress table not found or has different structure, skipping progress update');
+    } catch (progressError) {
+      console.log('user_progress table not found or has different structure, skipping progress update', progressError);
     }
 
     console.log('Practice results saved successfully');
@@ -445,4 +446,4 @@ export async function savePracticeResults(
     console.error('Error saving practice results:', error);
     throw error;
   }
-} 
+}

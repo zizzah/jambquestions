@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState,  } from 'react';
 import { 
   ArrowLeft, 
   ArrowRight, 
@@ -27,6 +27,27 @@ interface PracticeSessionProps {
   userId: string;
 }
 
+/**
+ * A component that manages and displays a practice session for a user.
+ *
+ * Props:
+ * - session: Contains details of the practice session including questions, subject, and metadata.
+ * - onEnd: Callback function to be called when the session ends.
+ * - userId: The ID of the user participating in the session.
+ *
+ * State:
+ * - currentQuestionIndex: Tracks the index of the current question being displayed.
+ * - selectedAnswer: Stores the answer selected by the user.
+ * - showExplanation: Boolean to control the visibility of the explanation for the current question.
+ * - score: Tracks the user's score based on correct answers.
+ * - answeredQuestions: Set of indices of questions that have been answered.
+ * - sessionStartTime: Timestamp of when the session started.
+ * - isSubmitting: Boolean indicating if the session results are being submitted.
+ *
+ * Provides functionality to navigate between questions, select answers, display explanations,
+ * and submit the session results at the end.
+ */
+
 export default function PracticeSession({ session, onEnd, userId }: PracticeSessionProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(session.currentQuestionIndex || 0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -39,6 +60,17 @@ export default function PracticeSession({ session, onEnd, userId }: PracticeSess
   const currentQuestion = session.questions[currentQuestionIndex];
   const isLastQuestion = currentQuestionIndex === session.questions.length - 1;
   const isFirstQuestion = currentQuestionIndex === 0;
+
+/**
+ * Handles the selection of an answer for the current question.
+ *
+ * @param {string} answer - The answer selected by the user.
+ *
+ * Prevents re-selection if the question has already been answered.
+ * Sets the selected answer and shows the explanation.
+ * Checks if the selected answer is correct and updates the score if it is.
+ * Marks the current question as answered.
+ */
 
   const handleAnswerSelect = (answer: string) => {
     if (answeredQuestions.has(currentQuestionIndex)) return;
@@ -55,6 +87,11 @@ export default function PracticeSession({ session, onEnd, userId }: PracticeSess
     setAnsweredQuestions(prev => new Set([...prev, currentQuestionIndex]));
   };
 
+  /**
+   * Navigates to the next question in the session.
+   * Does nothing if already on the last question.
+   * Resets the selected answer and hides the explanation.
+   */
   const nextQuestion = () => {
     if (currentQuestionIndex < session.questions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
@@ -63,6 +100,12 @@ export default function PracticeSession({ session, onEnd, userId }: PracticeSess
     }
   };
 
+/**
+ * Navigates to the previous question in the session.
+ * Does nothing if already on the first question.
+ * Resets the selected answer and hides the explanation.
+ */
+
   const prevQuestion = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(prev => prev - 1);
@@ -70,6 +113,19 @@ export default function PracticeSession({ session, onEnd, userId }: PracticeSess
       setShowExplanation(false);
     }
   };
+
+/**
+ * Handles the completion of a practice session by calculating the duration,
+ * sending the results to the server, and invoking the end callback.
+ *
+ * Sets the submitting state to true while the operation is in progress.
+ * Calculates the session duration in minutes and sends a POST request
+ * to the '/api/practice/end' endpoint with the session details including
+ * user ID, subject name, score, total questions, and duration.
+ * If the request is unsuccessful, logs the error and alerts the user.
+ * Finally, resets the submitting state and calls the onEnd callback
+ * to finalize the session.
+ */
 
   const handleFinishSession = async () => {
     setIsSubmitting(true);
@@ -102,6 +158,19 @@ export default function PracticeSession({ session, onEnd, userId }: PracticeSess
       setIsSubmitting(false);
     }
   };
+
+/**
+ * Determines the CSS class for a given answer option based on its selection status and correctness.
+ *
+ * @param {string} option - The answer option to evaluate.
+ * @returns {string} - The CSS class string that determines the styling of the option.
+ *
+ * Logic:
+ * - If explanations are not shown, returns a class based on whether the option is selected.
+ * - If the option is the correct answer, returns the class for correct answers.
+ * - If the option is selected but incorrect, returns the class for incorrect selections.
+ * - Defaults to a neutral class if none of the above conditions are met.
+ */
 
   const getOptionClass = (option: string) => {
     if (!showExplanation) {
