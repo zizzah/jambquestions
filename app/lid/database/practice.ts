@@ -114,7 +114,7 @@ export interface PracticeSession {
 }
 
 // Helper function to parse options from different formats
-function parseOptions(options: any): { A: string; B: string; C: string; D: string } {
+function parseOptions(options: string | { [key: string]: unknown }): { A: string; B: string; C: string; D: string } {
   if (typeof options === 'string') {
     try {
       return JSON.parse(options);
@@ -127,10 +127,10 @@ function parseOptions(options: any): { A: string; B: string; C: string; D: strin
   if (typeof options === 'object' && options !== null) {
     // If it's already an object, return it directly
     return {
-      A: options.A || 'Option A',
-      B: options.B || 'Option B', 
-      C: options.C || 'Option C',
-      D: options.D || 'Option D'
+      A: (options as never).A || 'Option A',
+      B: (options as any).B || 'Option B', 
+      C: (options as any).C || 'Option C',
+      D: (options as any).D || 'Option D'
     };
   }
   
@@ -337,7 +337,7 @@ export async function savePracticeResults(
           study_time = user_user_statistics.study_time + ${durationMinutes}
       `;
       console.log('Updated user_user_statistics successfully');
-    } catch (error) {
+    } catch {
       console.log('user_user_statistics table not found, trying user_statistics');
       try {
         await sql`
@@ -349,7 +349,7 @@ export async function savePracticeResults(
             study_time = user_statistics.study_time + ${durationMinutes}
         `;
         console.log('Updated user_statistics successfully');
-      } catch (statsError) {
+      } catch {
         console.log('Neither statistics table exists, skipping statistics update');
       }
     }
@@ -362,7 +362,7 @@ export async function savePracticeResults(
         VALUES (${userId}, 'practice', ${`Completed ${subjectName} practice session`}, ${(score / totalQuestions) * 100})
       `;
       console.log('Logged activity with score_achieved successfully');
-    } catch (error) {
+    } catch {
       console.log('score_achieved column not found, trying alternative structure');
       try {
         // Try with different column names
@@ -371,7 +371,7 @@ export async function savePracticeResults(
           VALUES (${userId}, 'practice', ${`Completed ${subjectName} practice session - Score: ${Math.round((score / totalQuestions) * 100)}%`})
         `;
         console.log('Logged activity with alternative structure successfully');
-      } catch (activityError) {
+      } catch {
         console.log('activity_log table not found or has different structure, skipping activity log');
       }
     }
@@ -389,7 +389,7 @@ export async function savePracticeResults(
         WHERE user_id = ${userId} AND name = ${subjectName}
       `;
       console.log('Updated subjects table successfully');
-    } catch (error) {
+    } catch {
       console.log('Standard subjects update failed, trying alternative structures');
       
       try {
@@ -400,7 +400,7 @@ export async function savePracticeResults(
           WHERE user_id = ${userId} AND subject_name = ${subjectName}
         `;
         console.log('Updated subjects with alternative column names successfully');
-      } catch (error2) {
+      } catch {
         console.log('Alternative subjects update failed, trying to create subject record');
         
         try {
@@ -420,7 +420,7 @@ export async function savePracticeResults(
               recent = ${recentActivity}
           `;
           console.log('Created/updated subject record successfully');
-        } catch (error3) {
+        } catch {
           console.log('Could not update subjects table, skipping subject progress update');
         }
       }
@@ -435,7 +435,7 @@ export async function savePracticeResults(
           streak = user_progress.streak + 1
       `;
       console.log('Updated user progress successfully');
-    } catch (error) {
+    } catch {
       console.log('user_progress table not found or has different structure, skipping progress update');
     }
 

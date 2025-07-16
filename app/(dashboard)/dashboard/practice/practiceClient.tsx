@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { PlayCircle, BookOpen, Clock, CheckCircle, XCircle } from 'lucide-react';
-import { UserSubject, PracticeQuestion } from '@/app/lid/database/practice';
+import { PlayCircle, BookOpen, Clock, CheckCircle } from 'lucide-react';
+import { UserSubject } from '@/app/lid/database/practice';
 import PracticeSession from './practiceSession';
 
 interface PracticeClientProps {
@@ -51,8 +51,8 @@ export default function PracticeClient({ userSubjects, userId }: PracticeClientP
 
       const session = await response.json();
       setCurrentSession(session);
-    } catch (error) {
-      console.error('Error starting practice session:', error);
+    } catch {
+      console.error('Error starting practice session:');
       alert('Failed to start practice session. Please try again.');
     } finally {
       setIsStartingSession(false);

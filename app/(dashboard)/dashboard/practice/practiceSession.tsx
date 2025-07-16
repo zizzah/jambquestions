@@ -1,15 +1,15 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   ArrowLeft, 
   ArrowRight, 
   CheckCircle, 
-  XCircle, 
   Clock, 
   BookOpen,
   Trophy,
-  RefreshCw
+  RefreshCw,
+  XCircle
 } from 'lucide-react';
 import { PracticeQuestion } from '@/app/lid/database/practice';
 
@@ -95,8 +95,8 @@ export default function PracticeSession({ session, onEnd, userId }: PracticeSess
       }
 
       onEnd();
-    } catch (error) {
-      console.error('Error finishing practice session:', error);
+    } catch {
+      console.error('Error finishing practice session:');
       alert('Failed to save your results. Please try again.');
     } finally {
       setIsSubmitting(false);
