@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { PlayCircle, BookOpen, Clock, CheckCircle } from 'lucide-react';
-import { UserSubject } from '@/app/lid/database/practice';
+import { PlayCircle, BookOpen, Clock, CheckCircle, XCircle } from 'lucide-react';
+import { UserSubject, PracticeQuestion } from '@/app/lid/database/practice';
 import PracticeSession from './practiceSession';
 
 interface PracticeClientProps {
@@ -10,72 +10,16 @@ interface PracticeClientProps {
   userId: string;
 }
 
-interface PracticeSessionData {
-  id: string;
-  userId: string;
-  subject: string;
-  questions: Array<{
-    id: string;
-    year: number;
-    subject: string;
-    type: string;
-    question: string;
-    options: {
-      A: string;
-      B: string;
-      C: string;
-      D: string;
-    };
-    answer: string;
-    explanation: string;
-  }>;
-  currentQuestionIndex: number;
-  score: number;
-  totalQuestions: number;
-  startTime: Date;
-  endTime?: Date;
-}
-
-/**
- * PracticeClient is a component that manages the practice interface for a user.
- *
- * It shows a list of subjects the user can practice, and allows the user to select
- * a subject and the number of questions they want to practice. It will then start a
- * practice session for the selected subject and question count.
- *
- * The component also displays the practice session details, such as the subject name,
- * number of questions, and unlimited time.
- *
- * @param userSubjects - An array of UserSubject objects that contain the subject name, question count,
- *                       and other metadata.
- * @param userId - The ID of the user.
- */
 export default function PracticeClient({ userSubjects, userId }: PracticeClientProps) {
   const [selectedSubject, setSelectedSubject] = useState<string | null>(null);
   const [selectedQuestionCount, setSelectedQuestionCount] = useState<number>(25);
   const [isStartingSession, setIsStartingSession] = useState(false);
-  const [currentSession, setCurrentSession] = useState<PracticeSessionData | null>(null);
+  const [currentSession, setCurrentSession] = useState<any>(null);
 
-  /**
-   * Handles the selection of a subject to practice. Sets the selectedSubject state
-   * to the selected subject name.
-   *
-   * @param {string} subjectName - The name of the selected subject.
-   */
   const handleSelectSubject = (subjectName: string) => {
     setSelectedSubject(subjectName);
   };
 
-  /**
-   * Handles the start practice button click. It will start a new practice session
-   * for the selected subject and question count.
-   *
-   * If the selected count exceeds the available questions, it will use the maximum
-   * available questions. It will also set the isStartingSession state to true while
-   * the request is in progress, and false when the request is done or fails.
-   *
-   * @returns {Promise<void>}
-   */
   const handleStartPractice = async () => {
     if (!selectedSubject) return;
 
@@ -115,27 +59,21 @@ export default function PracticeClient({ userSubjects, userId }: PracticeClientP
     }
   };
 
-  /**
-   * Handles the end of the practice session. Resets the selected subject and practice session states.
-   */
   const handleEndSession = () => {
     setCurrentSession(null);
     setSelectedSubject(null);
   };
 
   // If we have an active session, show the practice interface
-if (currentSession) {
-  return (
-    <PracticeSession 
-      session={{ 
-        ...currentSession, 
-        startTime: currentSession.startTime.toISOString() 
-      }} 
-      onEnd={handleEndSession}
-      userId={userId}
-    />
-  );
-}
+  if (currentSession) {
+    return (
+      <PracticeSession 
+        session={currentSession} 
+        onEnd={handleEndSession}
+        userId={userId}
+      />
+    );
+  }
 
   const selectedSubjectData = userSubjects.find(s => s.name === selectedSubject);
   const availableQuestions = selectedSubjectData?.questionCount || 0;
@@ -289,4 +227,4 @@ if (currentSession) {
       </div>
     </div>
   );
-}
+} 
