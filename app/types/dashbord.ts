@@ -1,3 +1,5 @@
+import { UserSubject } from "../lid/database/practice";
+
 // types/dashboard.ts
 export interface UserData {
   id: string;
@@ -13,7 +15,15 @@ export interface Stat {
   change: string;
   color: string;
 }
-
+export interface Session {
+  id: string;
+    subject: string;
+    questions: UserSubject[];
+    currentQuestionIndex?: number;
+    score?: number;
+    totalQuestions?: number;
+    startTime?: string;
+}
 export interface Subject {
   id: string;
   name: string;

@@ -7,51 +7,9 @@ const sql = postgres(process.env.POSTGRES_URL!, {
   idle_timeout: 20,
   connect_timeout: 10,
 });
-
+import { getQuestionTableName } from '@/app/utils/helper';
 // Updated mapping from user subject names to database table names
-const subjectTableMapping: { [key: string]: string } = {
-  // User subject names (lowercase) to actual table names
-  'english': 'english_queations',
-  'mathematics': 'mathematics_queations',
-  'physics': 'physics_queations',
-  'chemistry': 'chemistry_queations',
-  'biology': 'biology_questions',
-  'economics': 'economics_questions',
-  'government': 'government_questions',
-  'literature': 'literature_questions',
-  'geography': 'geography_questions',
-  'commerce': 'commerce_questions',
-  'accounting': 'accounting_questions',
-  'agricultural_science': 'agriculture_questions',
-  'civic_education': 'civic_education_questions',
-  'computer_studies': 'computer_studies_questions',
-  'crk': 'crk_questions',
-  'irk': 'irk_questions',
-  'hausa': 'hausa_questions',
-  'igbo': 'igbo_questions',
-  'yoruba': 'yoruba_questions',
-  
-  // Also support the full names for backward compatibility
-  'English Language': 'english_queations',
-  'Mathematics': 'mathematics_queations',
-  'Physics': 'physics_queations',
-  'Chemistry': 'chemistry_queations',
-  'Biology': 'biology_questions',
-  'Economics': 'economics_questions',
-  'Government': 'government_questions',
-  'Literature': 'literature_questions',
-  'Geography': 'geography_questions',
-  'Commerce': 'commerce_questions',
-  'Accounting': 'accounting_questions',
-  'Agricultural Science': 'agriculture_questions',
-  'Civic Education': 'civic_education_questions',
-  'Computer Studies': 'computer_studies_questions',
-  'Christian Religious Knowledge': 'crk_questions',
-  'Islamic Religious Knowledge': 'irk_questions',
-  'Hausa': 'hausa_questions',
-  'Igbo': 'igbo_questions',
-  'Yoruba': 'yoruba_questions'
-};
+
 
 // Subject configuration for UI
 const subjectConfigs: { [key: string]: { icon: string; color: string; bgColor: string; displayName: string } } = {
@@ -119,24 +77,22 @@ function parseOptions(options: string | { [key: string]: unknown }): { A: string
     try {
       return JSON.parse(options);
     } catch {
-      // If it's not valid JSON, return default structure
       return { A: 'Option A', B: 'Option B', C: 'Option C', D: 'Option D' };
     }
   }
   
   if (typeof options === 'object' && options !== null) {
-    // If it's already an object, return it directly
+    const obj = options as Record<string, unknown>;
     return {
-      A: (options as never).A || 'Option A',
-      B: (options as any).B || 'Option B', 
-      C: (options as any).C || 'Option C',
-      D: (options as any).D || 'Option D'
+      A: typeof obj.A === 'string' ? obj.A : 'Option A',
+      B: typeof obj.B === 'string' ? obj.B : 'Option B',
+      C: typeof obj.C === 'string' ? obj.C : 'Option C',
+      D: typeof obj.D === 'string' ? obj.D : 'Option D'
     };
   }
   
   return { A: 'Option A', B: 'Option B', C: 'Option C', D: 'Option D' };
 }
-
 // Get user's selected subjects with question counts
 export async function getUserSubjects(userId: string): Promise<UserSubject[]> {
   try {
@@ -173,7 +129,8 @@ export async function getUserSubjects(userId: string): Promise<UserSubject[]> {
 
     // Get question count for each subject
     for (const subjectName of userSubjects) {
-      const tableName = subjectTableMapping[subjectName.toLowerCase()];
+      const tableName = getQuestionTableName(subjectName);
+      console.log('these are the tables',tableName)
       if (!tableName) {
         console.warn(`No table mapping found for subject: ${subjectName}`);
         continue;
@@ -230,7 +187,7 @@ export async function getUserSubjects(userId: string): Promise<UserSubject[]> {
 // Get questions for a specific subject
 export async function getSubjectQuestions(subjectName: string, limit: number = 10): Promise<PracticeQuestion[]> {
   try {
-    const tableName = subjectTableMapping[subjectName.toLowerCase()];
+    const tableName = getQuestionTableName(subjectName);
     if (!tableName) {
       throw new Error(`No table mapping found for subject: ${subjectName}`);
     }
@@ -254,7 +211,7 @@ export async function getSubjectQuestions(subjectName: string, limit: number = 1
         LIMIT ${limit}
       `;
     } catch (error) {
-      console.log(`Standard query failed for ${tableName}, trying alternative structure`);
+      console.log(`Standard query failed for ${tableName} ${error}, trying alternative structure`);
       // Try alternative structure with question_id
       questions = await sql`
         SELECT 

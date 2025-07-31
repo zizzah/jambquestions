@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { PlayCircle, BookOpen, Clock, CheckCircle } from 'lucide-react';
-import { UserSubject } from '@/app/lid/database/practice';
+import { PracticeQuestion, UserSubject } from '@/app/lid/database/practice';
 import PracticeSession from './practiceSession';
 
 interface PracticeClientProps {
@@ -10,11 +10,22 @@ interface PracticeClientProps {
   userId: string;
 }
 
+interface Session {
+  id: string;
+  subject: string;
+  questions: PracticeQuestion[];
+  currentQuestionIndex?: number;
+  score?: number;
+  totalQuestions?: number;
+  startTime?: string;
+  userId?: string; // Add this if needed
+}
+
 export default function PracticeClient({ userSubjects, userId }: PracticeClientProps) {
   const [selectedSubject, setSelectedSubject] = useState<string | null>(null);
   const [selectedQuestionCount, setSelectedQuestionCount] = useState<number>(25);
   const [isStartingSession, setIsStartingSession] = useState(false);
-  const [currentSession, setCurrentSession] = useState<any>(null);
+  const [currentSession, setCurrentSession] = useState<Session | null>(null);
 
   const handleSelectSubject = (subjectName: string) => {
     setSelectedSubject(subjectName);
