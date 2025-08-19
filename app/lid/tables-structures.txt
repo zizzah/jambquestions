@@ -1,0 +1,532 @@
+
+📊 DATABASE TABLE STRUCTURES
+
+================================================================================
+
+🔸 TABLE: ACCOUNTING_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('accounting_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: ACTIVITY_LOG
+------------------------------------------------------------
+   id                        | uuid                 | NOT NULL DEFAULT: uuid_generate_v4()
+   user_id                   | uuid                 | NOT NULL
+   subject_id                | uuid                 | NULL
+   action                    | text                 | NOT NULL
+   subject                   | character varying(100) | NULL
+   activity_type             | character varying(50) | NULL
+   activity_description      | text                 | NULL
+   score                     | character varying(10) | NULL
+   time                      | character varying(50) | NULL
+   icon                      | character varying(10) | NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: AGRICULTURE_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('agriculture_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: BIOLOGY_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('biology_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: CHEMISTRY_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('chemistry_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: CIVIC_EDUCATION_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('civic_education_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: COMMERCE_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('commerce_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: COMPUTER_STUDIES_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('computer_studies_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: CRK_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('crk_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: ECONOMICS_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('economics_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: GEOGRAPHY_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('geography_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: GOALS
+------------------------------------------------------------
+   id                        | uuid                 | NOT NULL DEFAULT: uuid_generate_v4()
+   user_id                   | uuid                 | NOT NULL
+   title                     | character varying(200) | NOT NULL
+   description               | text                 | NULL
+   target_value              | integer              | NULL
+   current_value             | integer              | NULL     DEFAULT: 0
+   progress                  | integer              | NULL     DEFAULT: 0
+   priority                  | character varying(10) | NULL     DEFAULT: 'medium'::character varying
+   deadline                  | character varying(50) | NULL
+   status                    | character varying(20) | NULL     DEFAULT: 'active'::character varying
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+   updated_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: GOVERNMENT_QUESTIONS
+------------------------------------------------------------
+   id                        | uuid                 | NOT NULL DEFAULT: uuid_generate_v4()
+   year                      | text                 | NOT NULL
+   subject                   | character varying(255) | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+   updated_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: HAUSA_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('hausa_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: IGBO_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('igbo_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: IRK_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('irk_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: LITERATURE_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('literature_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: NOTIFICATIONS
+------------------------------------------------------------
+   id                        | uuid                 | NOT NULL DEFAULT: uuid_generate_v4()
+   user_id                   | uuid                 | NOT NULL
+   type                      | character varying(20) | NOT NULL
+   title                     | character varying(200) | NULL
+   message                   | text                 | NOT NULL
+   timestamp                 | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+   is_read                   | boolean              | NULL     DEFAULT: false
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: PASSWORD_RESET_TOKENS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('password_reset_tokens_id_seq'::regclass)
+   email                     | character varying(255) | NOT NULL
+   token                     | character varying(255) | NOT NULL
+   expires_at                | timestamp without time zone | NOT NULL
+   used                      | boolean              | NULL     DEFAULT: false
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: PHYSICS_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('physics_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: PRACTICE_SESSIONS
+------------------------------------------------------------
+   id                        | uuid                 | NOT NULL DEFAULT: uuid_generate_v4()
+   user_id                   | uuid                 | NOT NULL
+   subject_id                | uuid                 | NOT NULL
+   session_type              | character varying(20) | NULL     DEFAULT: 'practice'::character varying
+   questions_attempted       | integer              | NULL     DEFAULT: 0
+   correct_answers           | integer              | NULL     DEFAULT: 0
+   score_percentage          | numeric              | NULL
+   duration_minutes          | integer              | NULL
+   started_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+   completed_at              | timestamp without time zone | NULL
+
+🔸 TABLE: QUESTIONS
+------------------------------------------------------------
+   id                        | uuid                 | NOT NULL DEFAULT: uuid_generate_v4()
+   subject_id                | uuid                 | NOT NULL
+   question_text             | text                 | NOT NULL
+   option_a                  | text                 | NOT NULL
+   option_b                  | text                 | NOT NULL
+   option_c                  | text                 | NOT NULL
+   option_d                  | text                 | NOT NULL
+   correct_answer            | character varying(1) | NOT NULL
+   explanation               | text                 | NULL
+   difficulty_level          | character varying(20) | NULL     DEFAULT: 'Medium'::character varying
+   year                      | integer              | NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: SUBJECTS
+------------------------------------------------------------
+   id                        | uuid                 | NOT NULL DEFAULT: uuid_generate_v4()
+   user_id                   | uuid                 | NULL
+   name                      | character varying(255) | NULL
+   icon                      | character varying(10) | NULL
+   color                     | character varying(20) | NULL
+   description               | text                 | NULL
+   progress                  | integer              | NULL
+   questions                 | integer              | NULL
+   recent                    | character varying(100) | NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+   updated_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: USER_ANSWERS
+------------------------------------------------------------
+   id                        | uuid                 | NOT NULL DEFAULT: uuid_generate_v4()
+   user_id                   | uuid                 | NOT NULL
+   question_id               | uuid                 | NOT NULL
+   session_id                | uuid                 | NULL
+   selected_answer           | character varying(1) | NULL
+   is_correct                | boolean              | NULL
+   time_taken_seconds        | integer              | NULL
+   answered_at               | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: USER_PROGRESS
+------------------------------------------------------------
+   id                        | uuid                 | NOT NULL DEFAULT: uuid_generate_v4()
+   user_id                   | uuid                 | NOT NULL
+   subject_id                | uuid                 | NULL
+   questions_answered        | integer              | NULL     DEFAULT: 0
+   correct_answers           | integer              | NULL     DEFAULT: 0
+   progress_percentage       | integer              | NULL     DEFAULT: 0
+   streak                    | integer              | NULL     DEFAULT: 0
+   last_practice_date        | date                 | NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+   updated_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: USER_STATISTICS
+------------------------------------------------------------
+   id                        | uuid                 | NOT NULL DEFAULT: uuid_generate_v4()
+   user_id                   | uuid                 | NULL
+   total_questions           | integer              | NULL     DEFAULT: 0
+   correct_answers           | integer              | NULL     DEFAULT: 0
+   study_time                | integer              | NULL     DEFAULT: 0
+   weekly_change             | integer              | NULL     DEFAULT: 0
+   average_score             | double precision     | NULL     DEFAULT: 0
+   mock_exams_taken          | integer              | NULL     DEFAULT: 0
+   last_activity_date        | timestamp without time zone | NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+   updated_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: USER_USER_STATISTICS
+------------------------------------------------------------
+   id                        | uuid                 | NOT NULL DEFAULT: uuid_generate_v4()
+   user_id                   | uuid                 | NOT NULL
+   total_questions           | integer              | NULL     DEFAULT: 0
+   correct_answers           | integer              | NULL     DEFAULT: 0
+   study_time                | integer              | NULL     DEFAULT: 0
+   weekly_change             | numeric              | NULL     DEFAULT: 0
+   average_score             | numeric              | NULL     DEFAULT: 0
+   mock_exams_taken          | integer              | NULL     DEFAULT: 0
+   last_activity_date        | date                 | NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+   updated_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: USERS
+------------------------------------------------------------
+   id                        | uuid                 | NOT NULL DEFAULT: uuid_generate_v4()
+   name                      | character varying(255) | NOT NULL
+   email                     | character varying(255) | NOT NULL
+   password                  | character varying(255) | NOT NULL
+   phone                     | character varying(20) | NULL
+   state                     | character varying(100) | NULL
+   target_score              | character varying(20) | NULL
+   subjects                  | jsonb                | NULL
+   avatar                    | character varying(255) | NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+   updated_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+🔸 TABLE: YORUBA_QUESTIONS
+------------------------------------------------------------
+   id                        | integer              | NOT NULL DEFAULT: nextval('yoruba_questions_id_seq'::regclass)
+   question_id               | text                 | NOT NULL
+   year                      | text                 | NOT NULL
+   subject                   | text                 | NOT NULL
+   type                      | text                 | NOT NULL
+   question                  | text                 | NOT NULL
+   options                   | jsonb                | NOT NULL
+   answer                    | text                 | NOT NULL
+   explanation               | text                 | NOT NULL
+   created_at                | timestamp without time zone | NULL     DEFAULT: CURRENT_TIMESTAMP
+
+
+🔑 CONSTRAINTS AND INDEXES
+
+================================================================================
+
+🔸 ACCOUNTING_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: accounting_questions_pkey (id) -> accounting_questions(id)
+   UNIQUE: accounting_questions_question_id_key (question_id) -> accounting_questions(question_id)
+
+🔸 ACTIVITY_LOG CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: activity_log_pkey (id) -> activity_log(id)
+
+🔸 AGRICULTURE_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: agriculture_questions_pkey (id) -> agriculture_questions(id)
+   UNIQUE: agriculture_questions_question_id_key (question_id) -> agriculture_questions(question_id)
+
+🔸 BIOLOGY_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: biology_questions_pkey (id) -> biology_questions(id)
+   UNIQUE: biology_questions_question_id_key (question_id) -> biology_questions(question_id)
+
+🔸 CHEMISTRY_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: chemistry_questions_pkey (id) -> chemistry_questions(id)
+   UNIQUE: chemistry_questions_question_id_key (question_id) -> chemistry_questions(question_id)
+
+🔸 CIVIC_EDUCATION_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: civic_education_questions_pkey (id) -> civic_education_questions(id)
+   UNIQUE: civic_education_questions_question_id_key (question_id) -> civic_education_questions(question_id)
+
+🔸 COMMERCE_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: commerce_questions_pkey (id) -> commerce_questions(id)
+   UNIQUE: commerce_questions_question_id_key (question_id) -> commerce_questions(question_id)
+
+🔸 COMPUTER_STUDIES_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: computer_studies_questions_pkey (id) -> computer_studies_questions(id)
+   UNIQUE: computer_studies_questions_question_id_key (question_id) -> computer_studies_questions(question_id)
+
+🔸 CRK_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: crk_questions_pkey (id) -> crk_questions(id)
+   UNIQUE: crk_questions_question_id_key (question_id) -> crk_questions(question_id)
+
+🔸 ECONOMICS_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: economics_questions_pkey (id) -> economics_questions(id)
+   UNIQUE: economics_questions_question_id_key (question_id) -> economics_questions(question_id)
+
+🔸 GEOGRAPHY_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: geography_questions_pkey (id) -> geography_questions(id)
+   UNIQUE: geography_questions_question_id_key (question_id) -> geography_questions(question_id)
+
+🔸 GOALS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: goals_pkey (id) -> goals(id)
+
+🔸 GOVERNMENT_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: government_questions_pkey (id) -> government_questions(id)
+
+🔸 HAUSA_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: hausa_questions_pkey (id) -> hausa_questions(id)
+   UNIQUE: hausa_questions_question_id_key (question_id) -> hausa_questions(question_id)
+
+🔸 IGBO_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: igbo_questions_pkey (id) -> igbo_questions(id)
+   UNIQUE: igbo_questions_question_id_key (question_id) -> igbo_questions(question_id)
+
+🔸 IRK_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: irk_questions_pkey (id) -> irk_questions(id)
+   UNIQUE: irk_questions_question_id_key (question_id) -> irk_questions(question_id)
+
+🔸 LITERATURE_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: literature_questions_pkey (id) -> literature_questions(id)
+   UNIQUE: literature_questions_question_id_key (question_id) -> literature_questions(question_id)
+
+🔸 NOTIFICATIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: notifications_pkey (id) -> notifications(id)
+
+🔸 PASSWORD_RESET_TOKENS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: password_reset_tokens_pkey (id) -> password_reset_tokens(id)
+   UNIQUE: password_reset_tokens_token_key (token) -> password_reset_tokens(token)
+
+🔸 PHYSICS_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: physics_questions_pkey (id) -> physics_questions(id)
+   UNIQUE: physics_questions_question_id_key (question_id) -> physics_questions(question_id)
+
+🔸 PRACTICE_SESSIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: practice_sessions_pkey (id) -> practice_sessions(id)
+
+🔸 QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: questions_pkey (id) -> questions(id)
+
+🔸 SUBJECTS CONSTRAINTS:
+----------------------------------------
+   FOREIGN KEY: subjects_user_id_fkey (user_id) -> users(id)
+   PRIMARY KEY: subjects_pkey (id) -> subjects(id)
+   UNIQUE: subjects_user_id_name_key (name) -> subjects(user_id)
+   UNIQUE: subjects_user_id_name_key (user_id) -> subjects(name)
+   UNIQUE: subjects_user_id_name_key (user_id) -> subjects(user_id)
+   UNIQUE: subjects_user_id_name_key (name) -> subjects(name)
+
+🔸 USER_ANSWERS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: user_answers_pkey (id) -> user_answers(id)
+
+🔸 USER_PROGRESS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: user_progress_pkey (id) -> user_progress(id)
+   UNIQUE: user_progress_user_id_key (user_id) -> user_progress(user_id)
+
+🔸 USER_STATISTICS CONSTRAINTS:
+----------------------------------------
+   FOREIGN KEY: user_statistics_user_id_fkey (user_id) -> users(id)
+   PRIMARY KEY: user_statistics_pkey (id) -> user_statistics(id)
+   UNIQUE: user_statistics_user_id_key (user_id) -> user_statistics(user_id)
+
+🔸 USER_USER_STATISTICS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: user_user_statistics_pkey (id) -> user_user_statistics(id)
+   UNIQUE: user_user_statistics_user_id_key (user_id) -> user_user_statistics(user_id)
+
+🔸 USERS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: users_pkey (id) -> users(id)
+   UNIQUE: users_email_key (email) -> users(email)
+
+🔸 YORUBA_QUESTIONS CONSTRAINTS:
+----------------------------------------
+   PRIMARY KEY: yoruba_questions_pkey (id) -> yoruba_questions(id)
+   UNIQUE: yoruba_questions_question_id_key (question_id) -> yoruba_questions(question_id)
+
+✅ Database inspection completed!

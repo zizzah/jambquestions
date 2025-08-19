@@ -229,13 +229,40 @@ function getDefaultSubjects(userSubjects: unknown) {
 
   const subjectConfigs = {
     'Mathematics': { icon: '📐', color: 'bg-blue-500' },
-    'English Language': { icon: '📚', color: 'bg-green-500' },
-    'Physics': { icon: '⚡', color: 'bg-purple-500' },
-    'Chemistry': { icon: '🧪', color: 'bg-orange-500' },
-    'Biology': { icon: '🧬', color: 'bg-teal-500' },
-    'Economics': { icon: '💰', color: 'bg-yellow-500' },
-    'Government': { icon: '⚖️', color: 'bg-red-500' },
-    'Literature': { icon: '📖', color: 'bg-pink-500' }
+        'English Language': { icon: '📚', color: 'bg-green-500' },
+        'Physics': { icon: '⚡', color: 'bg-purple-500' },
+        'Chemistry': { icon: '🧪', color: 'bg-orange-500' },
+        'Biology': { icon: '🧬', color: 'bg-teal-500' },
+        'Economics': { icon: '💰', color: 'bg-yellow-500' },
+        'Government': { icon: '⚖️', color: 'bg-red-500' },
+        'Literature': { icon: '📖', color: 'bg-pink-500' },
+        'Geography': { icon: '🌍', color: 'bg-indigo-500' },
+        'Commerce': { icon: '💼', color: 'bg-gray-500' },
+        'Accounting': { icon: '📊', color: 'bg-blue-500' },
+        'Agricultural Science': { icon: '🌾', color: 'bg-green-500' },
+        'Civic Education': { icon: '🏛️', color: 'bg-purple-500' },
+        'Computer Studies': { icon: '💻', color: 'bg-orange-500' },
+    
+
+     'english': { icon: '📚', color: 'text-green-600', bgColor: 'bg-green-500', displayName: 'English Language' },
+      'mathematics': { icon: '📐', color: 'text-blue-600', bgColor: 'bg-blue-500', displayName: 'Mathematics' },
+      'physics': { icon: '⚡', color: 'text-purple-600', bgColor: 'bg-purple-500', displayName: 'Physics' },
+      'chemistry': { icon: '🧪', color: 'text-orange-600', bgColor: 'bg-orange-500', displayName: 'Chemistry' },
+      'biology': { icon: '🧬', color: 'text-teal-600', bgColor: 'bg-teal-500', displayName: 'Biology' },
+      'economics': { icon: '💰', color: 'text-yellow-600', bgColor: 'bg-yellow-500', displayName: 'Economics' },
+      'government': { icon: '⚖️', color: 'text-red-600', bgColor: 'bg-red-500', displayName: 'Government' },
+      'literature': { icon: '📖', color: 'text-pink-600', bgColor: 'bg-pink-500', displayName: 'Literature' },
+      'geography': { icon: '🌍', color: 'text-indigo-600', bgColor: 'bg-indigo-500', displayName: 'Geography' },
+      'commerce': { icon: '💼', color: 'text-gray-600', bgColor: 'bg-gray-500', displayName: 'Commerce' },
+      'accounting': { icon: '📊', color: 'text-emerald-600', bgColor: 'bg-emerald-500', displayName: 'Accounting' },
+      'agricultural science': { icon: '🌾', color: 'text-lime-600', bgColor: 'bg-lime-500', displayName: 'Agricultural Science' },
+      'civic education': { icon: '🏛️', color: 'text-cyan-600', bgColor: 'bg-cyan-500', displayName: 'Civic Education' },
+      'computer studies': { icon: '💻', color: 'text-slate-600', bgColor: 'bg-slate-500', displayName: 'Computer Studies' },
+      'christian religious knowledge': { icon: '✝️', color: 'text-blue-600', bgColor: 'bg-blue-500', displayName: 'Christian Religious Knowledge' },
+      'islamic religious knowledge': { icon: '☪️', color: 'text-green-600', bgColor: 'bg-green-500', displayName: 'Islamic Religious Knowledge' },
+      'hausa': { icon: '📝', color: 'text-orange-600', bgColor: 'bg-orange-500', displayName: 'Hausa' },
+      'igbo': { icon: '📝', color: 'text-green-600', bgColor: 'bg-green-500', displayName: 'Igbo' },
+      'yoruba': { icon: '📝', color: 'text-yellow-600', bgColor: 'bg-yellow-500', displayName: 'Yoruba' }
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -362,8 +389,16 @@ export async function createInitialUserData(userId: string) {
         'Biology': { icon: '🧬', color: 'bg-teal-500' },
         'Economics': { icon: '💰', color: 'bg-yellow-500' },
         'Government': { icon: '⚖️', color: 'bg-red-500' },
-        'Literature': { icon: '📖', color: 'bg-pink-500' }
+        'Literature': { icon: '📖', color: 'bg-pink-500' },
+        'Geography': { icon: '🌍', color: 'bg-indigo-500' },
+        'Commerce': { icon: '💼', color: 'bg-gray-500' },
+        'Accounting': { icon: '📊', color: 'bg-blue-500' },
+        'Agricultural Science': { icon: '🌾', color: 'bg-green-500' },
+        'Civic Education': { icon: '🏛️', color: 'bg-purple-500' },
+        'Computer Studies': { icon: '💻', color: 'bg-orange-500' }
       };
+
+ 
 
       for (const subject of userSubjects) {
         const config = subjectConfigs[subject as keyof typeof subjectConfigs];

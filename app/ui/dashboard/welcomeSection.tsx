@@ -16,7 +16,7 @@ export function WelcomeSection({ user }: WelcomeSectionProps) {
   return (
     <div className="mb-8">
       <h2 className="text-3xl font-bold mb-2">
-        {getGreeting()}, {user.name.split(' ')[1]}! 👋
+        {getGreeting()}, {user.name.split(' ')[2]}! 👋
       </h2>
       <p className="text-gray-300">Ready to continue your JAMB preparation journey?</p>
     </div>

@@ -1,4 +1,4 @@
-[
+   export const english =[
     {
         "year": 2000,
         "subject": "Government",

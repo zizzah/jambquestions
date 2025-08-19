@@ -59,22 +59,22 @@ export  const upcomingGoals = [
 
   
  export const availableSubjects = [
-    { id: 'english', name: 'English Language', emoji: '📚', required: true },
-    { id: 'mathematics', name: 'Mathematics', emoji: '🔢' },
-    { id: 'biology', name: 'Biology', emoji: '🧬' },
-    { id: 'chemistry', name: 'Chemistry', emoji: '⚗️' },
-    { id: 'physics', name: 'Physics', emoji: '⚡' },
-    { id: 'economics', name: 'Economics', emoji: '💰' },
-    { id: 'government', name: 'Government', emoji: '🏛️' },
-    { id: 'geography', name: 'Geography', emoji: '🌍' },
-    { id: 'literature', name: 'Literature in English', emoji: '📖' },
-    { id: 'crk', name: 'Christian Religious Knowledge', emoji: '✝️' },
-    { id: 'irk', name: 'Islamic Religious Knowledge', emoji: '☪️' },
-    { id: 'commerce', name: 'Commerce', emoji: '💼' },
-    { id: 'accounting', name: 'Accounting', emoji: '📊' },
-    { id: 'agricultural_science', name: 'Agricultural Science', emoji: '🌾' },
-    { id: 'civic_education', name: 'Civic Education', emoji: '🏛️' },
-    { id: 'computer_studies', name: 'Computer Studies', emoji: '💻' }
+    { id: 'English Language', name: 'English Language', emoji: '📚', required: true },
+    { id: 'Mathematics', name: 'Mathematics', emoji: '🔢' },
+    { id: 'Biology', name: 'Biology', emoji: '🧬' },
+    { id: 'Chemistry', name: 'Chemistry', emoji: '⚗️' },
+    { id: 'Physics', name: 'Physics', emoji: '⚡' },
+    { id: 'Economics', name: 'Economics', emoji: '💰' },
+    { id: 'Government', name: 'Government', emoji: '🏛️' },
+    { id: 'Geography', name: 'Geography', emoji: '🌍' },
+    { id: 'Literature', name: 'Literature in English', emoji: '📖' },
+    { id: 'Christian Religious Knowledge', name: 'Christian Religious Knowledge', emoji: '✝️' },
+    { id: 'Islamic Religious Knowledge', name: 'Islamic Religious Knowledge', emoji: '☪️' },
+    { id: 'Commerce', name: 'Commerce', emoji: '💼' },
+    { id: 'Accounting', name: 'Accounting', emoji: '📊' },
+    { id: 'Agricultural Science', name: 'Agricultural Science', emoji: '🌾' },
+    { id: 'Civic Education', name: 'Civic Education', emoji: '🏛️' },
+    { id: 'Computer Studies', name: 'Computer Studies', emoji: '💻' }
   ];
 
 
@@ -89,6 +89,48 @@ export  const upcomingGoals = [
   ];
 
 
+
+
+
+export    const subjectConfigs = {
+    'Mathematics': { icon: '📐', color: 'bg-blue-500' },
+    'English Language': { icon: '📚', color: 'bg-green-500' },
+    'Physics': { icon: '⚡', color: 'bg-purple-500' },
+    'Chemistry': { icon: '🧪', color: 'bg-orange-500' },
+    'Biology': { icon: '🧬', color: 'bg-teal-500' },
+    'Economics': { icon: '💰', color: 'bg-yellow-500' },
+    'Government': { icon: '⚖️', color: 'bg-red-500' },
+    'Literature': { icon: '📖', color: 'bg-pink-500' },
+    'Geography': { icon: '🌍', color: 'bg-indigo-500' },
+    'Literatureopkp': { icon: '📖', count: 300, id: 'Literatureopkp' },
+    'Christian Religious Knowledge': { icon: '✝️', count: 300, id: 'Christian Religious Knowledge' },
+    'Islamic Religious Knowledge': { icon: '☪️', count: 300, id: 'Islamic Religious Knowledge' },
+    'Commerce': { icon: '💼', count: 300, id: 'Commerce' },
+    'Accounting': { icon: '📊', count: 300, id: 'Accounting' },
+    'Agricultural Science': { icon: '🌾', count: 300, id: 'Agricultural Science' },
+    'Civic Education': { icon: '🏛️', count: 300, id: 'Civic Education' },
+    'Computer Studies': { icon: '💻', count: 300, id: 'Computer Studies' },
+
+     'english': { icon: '📚', color: 'text-green-600', bgColor: 'bg-green-500', displayName: 'English Language' },
+      'mathematics': { icon: '📐', color: 'text-blue-600', bgColor: 'bg-blue-500', displayName: 'Mathematics' },
+      'physics': { icon: '⚡', color: 'text-purple-600', bgColor: 'bg-purple-500', displayName: 'Physics' },
+      'chemistry': { icon: '🧪', color: 'text-orange-600', bgColor: 'bg-orange-500', displayName: 'Chemistry' },
+      'biology': { icon: '🧬', color: 'text-teal-600', bgColor: 'bg-teal-500', displayName: 'Biology' },
+      'economics': { icon: '💰', color: 'text-yellow-600', bgColor: 'bg-yellow-500', displayName: 'Economics' },
+      'government': { icon: '⚖️', color: 'text-red-600', bgColor: 'bg-red-500', displayName: 'Government' },
+      'literature': { icon: '📖', color: 'text-pink-600', bgColor: 'bg-pink-500', displayName: 'Literature' },
+      'geography': { icon: '🌍', color: 'text-indigo-600', bgColor: 'bg-indigo-500', displayName: 'Geography' },
+      'commerce': { icon: '💼', color: 'text-gray-600', bgColor: 'bg-gray-500', displayName: 'Commerce' },
+      'accounting': { icon: '📊', color: 'text-emerald-600', bgColor: 'bg-emerald-500', displayName: 'Accounting' },
+      'agricultural science': { icon: '🌾', color: 'text-lime-600', bgColor: 'bg-lime-500', displayName: 'Agricultural Science' },
+      'civic education': { icon: '🏛️', color: 'text-cyan-600', bgColor: 'bg-cyan-500', displayName: 'Civic Education' },
+      'computer studies': { icon: '💻', color: 'text-slate-600', bgColor: 'bg-slate-500', displayName: 'Computer Studies' },
+      'christian religious knowledge': { icon: '✝️', color: 'text-blue-600', bgColor: 'bg-blue-500', displayName: 'Christian Religious Knowledge' },
+      'islamic religious knowledge': { icon: '☪️', color: 'text-green-600', bgColor: 'bg-green-500', displayName: 'Islamic Religious Knowledge' },
+      'hausa': { icon: '📝', color: 'text-orange-600', bgColor: 'bg-orange-500', displayName: 'Hausa' },
+      'igbo': { icon: '📝', color: 'text-green-600', bgColor: 'bg-green-500', displayName: 'Igbo' },
+      'yoruba': { icon: '📝', color: 'text-yellow-600', bgColor: 'bg-yellow-500', displayName: 'Yoruba' }
+  };
 
 
 

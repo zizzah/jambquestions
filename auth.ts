@@ -1,3 +1,4 @@
+// First, update your auth.ts to include OTP provider
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
@@ -28,20 +29,51 @@ async function getUser(email: string): Promise<User | undefined> {
   }
 }
 
+// Add OTP verification function
+async function verifyOTP(email: string, otp: string): Promise<boolean> {
+  try {
+    const otpRecords = await sql`
+      SELECT * FROM otps 
+      WHERE email = ${email.toLowerCase().trim()} 
+        AND code = ${otp}
+        AND type = 'LOGIN'
+        AND expires_at > NOW()
+        AND used = false
+    `;
+
+    if (otpRecords.length === 0) {
+      return false;
+    }
+
+    // Mark OTP as used
+    await sql`
+      UPDATE otps 
+      SET used = true 
+      WHERE id = ${otpRecords[0].id}
+    `;
+
+    return true;
+  } catch (error) {
+    console.error('OTP verification error:', error);
+    return false;
+  }
+}
+
 export const { auth, signIn, signOut, handlers } = NextAuth({
   ...authConfig,
-  secret: process.env.NEXTAUTH_SECRET, // Explicitly set secret
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
+    // Existing password-based login
     Credentials({
+      id: 'credentials',
       name: 'credentials',
       credentials: {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' }
       },
       async authorize(credentials) {
-        console.log('Authorization attempt started');
+        console.log('Password authorization attempt started');
         
-        // Validate credentials format
         const parsedCredentials = z
           .object({ 
             email: z.string().email().min(1), 
@@ -70,9 +102,9 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
           if (passwordsMatch) {
             console.log('Password match successful, returning user data');
             return {
-              id: user.id.toString(), // Ensure ID is string
+              id: user.id.toString(),
               email: user.email,
-              name: user.name || user.email, // Fallback to email if name is null
+              name: user.name || user.email,
             };
           } else {
             console.error('Password mismatch for user:', email);
@@ -84,10 +116,63 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
         }
       }
     }),
+    
+    // New OTP-based login
+    Credentials({
+      id: 'otp',
+      name: 'otp',
+      credentials: {
+        email: { label: 'Email', type: 'email' },
+        otp: { label: 'OTP', type: 'text' }
+      },
+      async authorize(credentials) {
+        console.log('OTP authorization attempt started');
+        
+        const parsedCredentials = z
+          .object({ 
+            email: z.string().email().min(1), 
+            otp: z.string().length(6) 
+          })
+          .safeParse(credentials);
+
+        if (!parsedCredentials.success) {
+          console.error('OTP credential validation failed:', parsedCredentials.error.flatten());
+          return null;
+        }
+
+        const { email, otp } = parsedCredentials.data;
+        
+        try {
+          const user = await getUser(email);
+          
+          if (!user) {
+            console.error('User not found for email:', email);
+            return null;
+          }
+
+          console.log('User found, verifying OTP');
+          const isValidOTP = await verifyOTP(email, otp);
+          
+          if (isValidOTP) {
+            console.log('OTP verification successful, returning user data');
+            return {
+              id: user.id.toString(),
+              email: user.email,
+              name: user.name || user.email,
+            };
+          } else {
+            console.error('Invalid or expired OTP for user:', email);
+            return null;
+          }
+        } catch (error) {
+          console.error('OTP authorization error:', error);
+          return null;
+        }
+      }
+    }),
   ],
   callbacks: {
     async jwt({ token, user }) {
-      // Persist user ID in the token
       if (user) {
         token.id = user.id;
         token.email = user.email;
@@ -96,7 +181,6 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
       return token;
     },
     async session({ session, token }) {
-      // Send properties to the client
       if (token && session.user) {
         session.user.id = token.id as string;
         session.user.email = token.email as string;
@@ -107,23 +191,20 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
     async redirect({ url, baseUrl }) {
       console.log('Redirect callback - url:', url, 'baseUrl:', baseUrl);
       
-      // Handle relative URLs
       if (url.startsWith('/')) {
         return `${baseUrl}${url}`;
       }
       
-      // Handle same origin URLs
       if (url.startsWith(baseUrl)) {
         return url;
       }
       
-      // Default redirect to dashboard
       return `${baseUrl}/dashboard`;
     },
   },
   session: {
     strategy: 'jwt',
-    maxAge: 30 * 24 * 60 * 60, // 30 days
+    maxAge: 30 * 24 * 60 * 60,
   },
   events: {
     async signIn({ user, account, profile, isNewUser }) {
