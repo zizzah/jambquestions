@@ -450,14 +450,14 @@ const DashboardLayouts: React.FC<DashboardLayoutProps> = ({ children }) => {
                   </div>
                   <button 
                     className="w-full flex items-center space-x-3 px-4 py-2 hover:bg-white/10 transition-all text-left"
-                    onClick={() => handleNavigation('/profile')}
+                    onClick={() => handleNavigation('dashboard/profile')}
                   >
                     <User size={16} />
                     <span>Profile</span>
                   </button>
                   <button 
                     className="w-full flex items-center space-x-3 px-4 py-2 hover:bg-white/10 transition-all text-left"
-                    onClick={() => handleNavigation('/settings')}
+                    onClick={() => handleNavigation('dashboard/settings')}
                   >
                     <Settings size={16} />
                     <span>Settings</span>
