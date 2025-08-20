@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { User,  Edit2, 
-  Save, X, Upload, Settings, Bell, Shield, BookOpen, Target, Trophy, Camera, Eye, EyeOff } from 'lucide-react';
+  Save,  Settings, Bell, Shield, BookOpen, Target, Trophy, Camera, Eye, EyeOff } from 'lucide-react';
 
 // Types
 interface UserProfile {
